@@ -22,7 +22,7 @@ const ThemeSwitch = () => {
   };
 
   return (
-    <div className="flex space-x-3">
+    <div className="flex space-x-2">
       <Moon />
       <Switch
         checked={resolvedTheme === 'light'}

@@ -1,0 +1,6 @@
+{
+  "HomePage": {
+    "title": "Next.js 多語系示範教學",
+    "description": "這是一個 Next.js 多語系示範教學，使用 i18n 與 next-i18next 套件。"
+  }
+}
