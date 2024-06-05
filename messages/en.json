@@ -2,5 +2,9 @@
   "HomePage": {
     "title": "Next.js Internalization Demo",
     "description": "This is a simple demo of how to use Next.js with internalization."
+  },
+  "AboutPage": {
+    "title": "About Us",
+    "description": "This is the about page."
   }
 }

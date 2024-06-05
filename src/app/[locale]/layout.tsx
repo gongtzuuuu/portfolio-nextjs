@@ -1,7 +1,12 @@
 import type { Metadata } from 'next';
+import React, { ReactNode } from 'react';
 import { Inter } from 'next/font/google';
-import { Providers } from '../providers';
+import { ThemeProvider } from '@/context/ThemeProvider';
+import { MenuProvider } from '@/context/MenuProvider';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import '@/styles/globals.css';
+import Body from '@/components/Body';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -11,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 interface RootLayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
   params: {
     locale: string;
   };
@@ -24,7 +29,15 @@ export default function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={inter.className}>
-        <Providers>{children}</Providers>
+        <ThemeProvider>
+          <MenuProvider>
+            <main className="flex min-h-screen flex-col items-center justify-between p-24">
+              <Header />
+              <Body>{children}</Body>
+              <Footer />
+            </main>
+          </MenuProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

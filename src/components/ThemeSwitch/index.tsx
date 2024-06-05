@@ -1,9 +1,7 @@
 'use client';
-
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import { Sun, Moon } from 'lucide-react';
-import { Switch } from '../ui/Switch/Switch';
 
 const ThemeSwitch = () => {
   const [mounted, setMounted] = useState(false);
@@ -22,13 +20,13 @@ const ThemeSwitch = () => {
   };
 
   return (
-    <div className="flex space-x-2">
-      <Moon />
-      <Switch
-        checked={resolvedTheme === 'light'}
-        onCheckedChange={handleClickedChange}
-      />
-      <Sun />
+    <div>
+      {(resolvedTheme === 'dark' || !mounted) && (
+        <Moon className="cursor-pointer" onClick={handleClickedChange} />
+      )}
+      {(resolvedTheme === 'light' || !mounted) && (
+        <Sun className="cursor-pointer" onClick={handleClickedChange} />
+      )}
     </div>
   );
 };

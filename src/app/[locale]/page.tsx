@@ -1,17 +1,16 @@
+import React from 'react';
 import { useTranslations } from 'next-intl';
-import ThemeSwitch from '@/components/ThemeSwitch';
-import LangSelect from '@/components/LangSelect';
 
-export default function Home() {
+interface HomePageProps {}
+
+const HomePage: React.FC<HomePageProps> = ({}) => {
   const t = useTranslations('HomePage');
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="w-full flex justify-between">
-        <ThemeSwitch />
-        <LangSelect />
-      </div>
+    <div id="home-page" className="container flex flex-col items-center">
       <h1 className="text-4xl font-bold">{t('title')}</h1>
       <p>{t('description')}</p>
-    </main>
+    </div>
   );
-}
+};
+
+export default HomePage;
