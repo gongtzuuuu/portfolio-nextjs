@@ -6,5 +6,13 @@
   "AboutPage": {
     "title": "About Us",
     "description": "This is the about page."
+  },
+  "ContactPage": {
+    "title": "Contact Us",
+    "description": "This is the contact page."
+  },
+  "WorkPage": {
+    "title": "My Work",
+    "description": "This is the work page."
   }
 }

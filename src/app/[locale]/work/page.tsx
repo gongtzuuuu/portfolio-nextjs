@@ -1,10 +1,10 @@
 import React from 'react';
 import { useTranslations } from 'next-intl';
 
-interface ContactPageProps {}
+interface WorkPageProps {}
 
-const ContactPage: React.FC<ContactPageProps> = ({}) => {
-  const t = useTranslations('ContactPage');
+const WorkPage: React.FC<WorkPageProps> = ({}) => {
+  const t = useTranslations('WorkPage');
   return (
     <div className="container flex flex-col items-center">
       <h1 className="text-4xl font-bold">{t('title')}</h1>
@@ -13,4 +13,4 @@ const ContactPage: React.FC<ContactPageProps> = ({}) => {
   );
 };
 
-export default ContactPage;
+export default WorkPage;

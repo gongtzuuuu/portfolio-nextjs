@@ -6,5 +6,13 @@
   "AboutPage": {
     "title": "關於我們",
     "description": "這是一個關於我們的頁面。"
+  },
+  "ContactPage": {
+    "title": "聯絡我們",
+    "description": "這是一個聯絡我們的頁面。"
+  },
+  "WorkPage": {
+    "title": "我的作品",
+    "description": "這是一個我的作品的頁面。"
   }
 }

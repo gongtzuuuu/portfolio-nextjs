@@ -21,8 +21,14 @@ const Menu: React.FC<MenuProps> = ({}) => {
       hidden={!isMenuOpen}
       className="container flex flex-col items-center space-y-6"
     >
+      <p className="cursor-pointer" onClick={() => handleRouteChange('')}>
+        HOME
+      </p>
       <p className="cursor-pointer" onClick={() => handleRouteChange('about')}>
         ABOUT
+      </p>
+      <p className="cursor-pointer" onClick={() => handleRouteChange('work')}>
+        WORK
       </p>
       <p
         className="cursor-pointer"
