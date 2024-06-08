@@ -4,9 +4,9 @@ import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/context/ThemeProvider';
 import { MenuProvider } from '@/context/MenuProvider';
 import Header from '@/components/Header';
+import Body from '@/components/Body';
 import Footer from '@/components/Footer';
 import '@/styles/globals.css';
-import Body from '@/components/Body';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -31,7 +31,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider>
           <MenuProvider>
-            <main className="flex min-h-screen flex-col items-center justify-between p-24">
+            <main className="flex min-h-screen flex-col justify-between p-12 md:p-24 lg:p-24">
               <Header />
               <Body>{children}</Body>
               <Footer />
