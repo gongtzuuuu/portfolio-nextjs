@@ -9,7 +9,7 @@ interface BodyProps {
 
 const Body: React.FC<BodyProps> = ({ children }) => {
   const { isMenuOpen } = useMenuContext();
-  return <div>{isMenuOpen ? <Menu /> : children}</div>;
+  return <>{isMenuOpen ? <Menu /> : children}</>;
 };
 
 export default Body;

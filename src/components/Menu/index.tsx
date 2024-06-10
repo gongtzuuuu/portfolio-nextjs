@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useLocale } from 'next-intl';
 import { useMenuContext } from '@/context/MenuProvider';
 import SocialMedia from '@/components/SocialMedia';
-import MenuImage from '@/assets/_google-deepmind-Oy2yXvl1WLg-unsplash.jpg';
+import MenuImage from '@/assets/scott-webb-PkJOP7JfVfk-unsplash.jpg';
 
 interface MenuProps {}
 
@@ -22,11 +22,11 @@ const Menu: React.FC<MenuProps> = ({}) => {
     >
       {/**  Menu Image */}
       <div className="w-full md:w-[280px] h-[80px] md:h-auto border rounded-lg overflow-hidden">
-        {/* <Image
+        <Image
           src={MenuImage}
           alt="Menu Image"
           className="w-full h-full object-cover"
-        /> */}
+        />
       </div>
       {/** Menu Content */}
       <div className="flex flex-col space-y-10">

@@ -8,10 +8,7 @@ const HomePage: React.FC<HomePageProps> = ({}) => {
   const t = useTranslations('HomePage');
   const activeLocale = useLocale();
   return (
-    <div
-      id="home-page"
-      className="container flex flex-col space-y-6 items-center"
-    >
+    <div id="home-page" className="flex flex-col space-y-6 items-center">
       <h1 className="text-3xl md:text-4xl font-bold text-center">
         Hello, I am Tzu-Yun Liang
       </h1>
