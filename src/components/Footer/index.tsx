@@ -1,11 +1,19 @@
 import React from 'react';
+// import Image from 'next/image';
+// import { Linkedin } from 'lucide-react';
+// import GithubIcon from '@/assets/github-142-svgrepo-com.svg';
+import { Toggle } from '@/components/ui/Toggle/Toggle';
 
 interface FooterLinkProps {
   text: string;
 }
 
 const FooterLink: React.FC<FooterLinkProps> = ({ text }) => {
-  return <p className="cursor-pointer hover:text-lg">{text}</p>;
+  return (
+    <Toggle>
+      <p className="cursor-pointer">{text}</p>
+    </Toggle>
+  );
 };
 
 interface FooterProps {}
