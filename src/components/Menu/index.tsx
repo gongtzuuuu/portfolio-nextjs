@@ -6,6 +6,7 @@ import { useLocale } from 'next-intl';
 import { useMenuContext } from '@/context/MenuProvider';
 import SocialMedia from '@/components/SocialMedia';
 import MenuImage from '@/assets/scott-webb-PkJOP7JfVfk-unsplash.jpg';
+import SocialMediaItem from '../SocialMediaItem';
 
 interface MenuProps {}
 
@@ -53,7 +54,20 @@ const Menu: React.FC<MenuProps> = ({}) => {
           </Link>
         </div>
         {/** Menu Footer */}
-        <SocialMedia />
+        <div className="flex space-x-4">
+          <SocialMediaItem
+            label="LinkedIn"
+            href="https://www.linkedin.com/in/tyliang/"
+          />
+          <SocialMediaItem
+            label="Medium"
+            href="https://www.medium.com/@tyliang"
+          />
+          <SocialMediaItem
+            label="Github"
+            href="https://github.com/gongtzuuuu"
+          />
+        </div>
       </div>
     </div>
   );
