@@ -9,6 +9,7 @@ const WorkPage: React.FC<WorkPageProps> = ({}) => {
   const t = useTranslations('WorkPage');
   return (
     <div className="h-full flex items-end">
+      {/** WORK IMAGE */}
       <div className="h-[200px] w-[50%] hidden md:flex px-4 pt-4">
         <Image
           src={PlaceHolderImg}
