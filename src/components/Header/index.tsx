@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import ThemeSwitch from '@/components/ThemeSwitch';
 import LangSelect from '@/components/LangSelect';
 import MenuToggleButton from '@/components/MenuToggleButton';
@@ -8,7 +9,9 @@ interface HeaderProps {}
 const Header: React.FC<HeaderProps> = ({}) => {
   return (
     <div className="w-full flex justify-between">
-      <h3 className="font-bold">TZU</h3>
+      <Link href="/" className="font-bold">
+        TZU
+      </Link>
       <div className="flex space-x-5">
         <ThemeSwitch />
         <LangSelect />
