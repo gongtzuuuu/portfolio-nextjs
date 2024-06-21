@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import React, { ReactNode } from 'react';
 import { Inter } from 'next/font/google';
+import NextTopLoader from 'nextjs-toploader';
 import { ThemeProvider } from '@/context/ThemeProvider';
 import { MenuProvider } from '@/context/MenuProvider';
 import Header from '@/components/Header';
@@ -29,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={inter.className}>
+        <NextTopLoader color="#937829" showSpinner={false} />
         <ThemeProvider>
           <MenuProvider>
             <main className="flex min-h-screen flex-col justify-between p-12 md:p-24 lg:p-24">
