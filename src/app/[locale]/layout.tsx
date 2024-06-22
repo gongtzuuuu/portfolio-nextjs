@@ -7,7 +7,9 @@ import { MenuProvider } from '@/context/MenuProvider';
 import Header from '@/components/Header';
 import Body from '@/components/Body';
 import Footer from '@/components/Footer';
+import Cursor from '@/components/Cursor';
 import '@/styles/globals.css';
+import '@/styles/style.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -31,6 +33,7 @@ export default function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <body className={inter.className}>
         <NextTopLoader color="#937829" showSpinner={false} />
+        <Cursor />
         <ThemeProvider>
           <MenuProvider>
             <main className="flex min-h-screen flex-col justify-between p-12 md:p-24 lg:p-24">

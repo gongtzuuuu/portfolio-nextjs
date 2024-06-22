@@ -1,0 +1,32 @@
+* {
+  -webkit-tap-highlight-color: transparent;
+  cursor: none;
+}
+
+* :hover {
+  cursor: none;
+}
+
+.cursor__outer {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  border: 1px solid #937829;
+  left: 0;
+}
+
+.cursor__inner {
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background-color: #937829;
+}
+
+.cursor__outer__clicked {
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
