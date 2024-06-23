@@ -1,7 +1,7 @@
 'use client';
 import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useFollowCursor } from '@/hook/use-follow-cursor';
+import { useFollowCursor } from '@/hook/useFollowCursor';
 
 interface CursorProps {}
 

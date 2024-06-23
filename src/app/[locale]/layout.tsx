@@ -33,7 +33,7 @@ export default function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <body className={inter.className}>
         <NextTopLoader color="#937829" showSpinner={false} />
-        <Cursor />
+        {/* <Cursor /> */}
         <ThemeProvider>
           <MenuProvider>
             <main className="flex min-h-screen flex-col justify-between p-12 md:p-24 lg:p-24">
