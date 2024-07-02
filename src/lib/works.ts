@@ -1,15 +1,9 @@
-import { StaticImageData } from 'next/image';
-import musicImg from '@/assets/music.svg';
-import travelImg from '@/assets/travel.svg';
-import gymImg from '@/assets/gym.svg';
-import officeImg from '@/assets/office.svg';
-
 export interface WorkType {
   index: number;
   label: string;
   date: string;
   type: string;
-  image: StaticImageData;
+  src: string;
 }
 
 export const works: WorkType[] = [
@@ -18,27 +12,27 @@ export const works: WorkType[] = [
     label: 'meloverse',
     date: 'June 2023',
     type: 'Personal Project',
-    image: '/assets/music.svg',
+    src: '/music.svg',
   },
   {
     index: 1,
     label: 'GluttonGlobe',
     date: 'June 2023',
     type: 'Collaboration Project',
-    image: travelImg,
+    src: '/travel.svg',
   },
   {
     index: 2,
     label: 'FitQuest',
     date: 'June 2023',
     type: 'Collaboration Project',
-    image: gymImg,
+    src: '/gym.svg',
   },
   {
     index: 3,
     label: 'Office Simulator',
     date: 'June 2023',
     type: 'Personal Project',
-    image: officeImg,
+    src: '/office.svg',
   },
 ];
