@@ -1,12 +1,13 @@
 import React from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import WorkPage from '@/layout/WorkPage';
 
 interface PageProps {}
 
 const Page: React.FC<PageProps> = ({}) => {
   const t = useTranslations('WorkPage');
-  return <WorkPage />;
+  const activeLocale = useLocale();
+  return <WorkPage activeLocale={activeLocale} />;
 };
 
 export default Page;

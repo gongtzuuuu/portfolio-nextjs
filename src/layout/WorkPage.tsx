@@ -2,37 +2,26 @@
 import React, { Fragment, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { works, WorkType } from '@/lib/works';
+import { useRouter } from 'next/navigation';
+import { workLabelToSegment } from '@/lib/url-utils';
 
-const variants = {
-  enter: (direction: number) => {
-    return {
-      y: direction > 0 ? 1000 : -1000,
-      opacity: 0,
-    };
-  },
-  center: {
-    zIndex: 1,
-    y: 0,
-    opacity: 1,
-  },
-  exit: (direction: number) => {
-    return {
-      zIndex: 0,
-      y: direction < 0 ? 1000 : -1000,
-      opacity: 0,
-    };
-  },
-};
+interface WorkPageProps {
+  activeLocale: string;
+}
 
-interface WorkPageProps {}
-
-const WorkPage: React.FC<WorkPageProps> = ({}) => {
+const WorkPage: React.FC<WorkPageProps> = ({ activeLocale }) => {
+  const router = useRouter();
   const [selectWorkIndex, setSelectWorkIndex] = useState<number | null>(null);
   // const [, setSelectWork] = useState<WorkType>(works[0]);
 
-  const handleWorkSelect = (index: number) => {
+  const handleWorkHover = (index: number) => {
     setSelectWorkIndex(index);
     // setSelectWork(works[index]);
+  };
+
+  const handleWorkClick = (label: string) => {
+    const segment = workLabelToSegment(label);
+    router.push(`work/${segment}`);
   };
 
   return (
@@ -72,7 +61,8 @@ const WorkPage: React.FC<WorkPageProps> = ({}) => {
                 whileHover={{ scaleX: 1.2, transformOrigin: 'left center' }}
                 transition={{ duration: 0.1, ease: 'easeInOut' }}
                 className="text-3xl font-bold cursor-pointer"
-                onHoverStart={() => handleWorkSelect(work.index)}
+                onHoverStart={() => handleWorkHover(work.index)}
+                onClick={() => handleWorkClick(work.label)}
               >
                 {work.label}{' '}
               </motion.h3>
