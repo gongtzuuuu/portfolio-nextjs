@@ -1,11 +1,10 @@
 import React from 'react';
-import { useTranslations } from 'next-intl';
 import AboutPage from '@/layout/AboutPage';
+import { useLocale } from 'next-intl';
 
 interface AboutPageProps {}
 
 const Page: React.FC<AboutPageProps> = ({}) => {
-  const t = useTranslations('AboutPage');
   return <AboutPage />;
 };
 

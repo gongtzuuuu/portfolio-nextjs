@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { ArrowDownToLine } from 'lucide-react';
+import { ArrowDownToLine, Headset } from 'lucide-react';
 import PlaceHolderImg from '@/assets/scott-webb-PkJOP7JfVfk-unsplash.jpg';
 import SocialMediaItem from '@/components/SocialMediaItem';
 
@@ -9,21 +9,30 @@ interface AboutPageProps {}
 
 const AboutPage: React.FC<AboutPageProps> = ({}) => {
   const t = useTranslations('AboutPage');
+  const pageTitle = t('title');
+  const pageDescription = t.rich('description', {
+    break: (chunks: any) => (
+      <>
+        <br />
+        <br />
+      </>
+    ),
+  });
+  const pageLinksResume = t('links.resume');
+  const pageLinkContact = t('links.contact');
+
   return (
     <div className="h-full flex items-end">
       {/** ABOUT ME PARAGRAPH */}
       <div className="w-full md:w-[50%] max-h-96 overflow-y-scroll no-scrollbar flex flex-col space-y-4 px-0 md:p-4">
         <div className="space-y-2">
-          <h3 className="text-4xl font-bold">about me</h3>
+          <h3 className="text-4xl font-bold">{pageTitle}</h3>
         </div>
         <hr />
         <div className="flex flex-col space-y-8">
-          <p className="w-[90%]">
-            I am a software engineer with a background in project management and
-            art.
-          </p>
+          <p className="w-[90%]">{pageDescription}</p>
           <SocialMediaItem
-            label="resume"
+            label={pageLinksResume}
             href="#"
             icon={<ArrowDownToLine size={16} />}
             isHideMobile={false}

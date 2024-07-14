@@ -5,7 +5,6 @@ import HomePage from '@/layout/HomePage';
 interface HomePageProps {}
 
 const Page: React.FC<HomePageProps> = ({}) => {
-  const t = useTranslations('HomePage');
   const activeLocale = useLocale();
   return <HomePage activeLocale={activeLocale} />;
 };

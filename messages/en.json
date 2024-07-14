@@ -1,10 +1,7 @@
 {
   "HomePage": {
     "title": "Hello, I am Tzu-Yun Liang",
-    "description": [
-      "I am a software engineer & product designer",
-      "who loves to deliver high-quality digital solutions."
-    ],
+    "description": "I am a software engineer & product designer<break></break>who loves to deliver high-quality digital solutions.",
     "links": {
       "works": "see my projects",
       "about": "more about me"
@@ -12,14 +9,10 @@
   },
   "AboutPage": {
     "title": "about me",
-    "description": [
-      "I'm passionate about working alongside talented teams – backend developers, UI/UX designers, and stakeholders – to bring high-quality software solutions to life.",
-      "With a diverse skillset in Next.js, React, TypeScript, UI/UX design and API integration, I strive to contribute effectively.",
-      "Plus, I've honed my skills in information security, version control and project management to ensure a smooth development process."
-    ],
+    "description": "I'm passionate about working alongside talented teams – backend developers, UI/UX designers, and stakeholders – to bring high-quality software solutions to life.<break></break>With a diverse skillset in Next.js, React, TypeScript, UI/UX design and API integration, I strive to contribute effectively. Plus, I've honed my skills in information security, version control and project management to ensure a smooth development process.",
     "links": {
       "contact": "contact me",
-      "works": "download my resume"
+      "resume": "download my resume"
     }
   },
   "ContactPage": {
