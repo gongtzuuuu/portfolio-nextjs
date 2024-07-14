@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { ArrowDownToLine, Headset } from 'lucide-react';
 import PlaceHolderImg from '@/assets/scott-webb-PkJOP7JfVfk-unsplash.jpg';
 import SocialMediaItem from '@/components/SocialMediaItem';
@@ -8,6 +8,7 @@ import SocialMediaItem from '@/components/SocialMediaItem';
 interface AboutPageProps {}
 
 const AboutPage: React.FC<AboutPageProps> = ({}) => {
+  const activeLocale = useLocale();
   const t = useTranslations('AboutPage');
   const pageTitle = t('title');
   const pageDescription = t.rich('description', {
@@ -21,6 +22,11 @@ const AboutPage: React.FC<AboutPageProps> = ({}) => {
   const pageLinksResume = t('links.resume');
   const pageLinkContact = t('links.contact');
 
+  const resumeLink =
+    activeLocale === 'en'
+      ? 'https://drive.google.com/file/d/12oRetIKRQguKSOMrBFELBGkpL2yfuzJd/view?usp=drive_link'
+      : 'https://drive.google.com/file/d/1Q3Za77hk5rn_g4kuRiNsuHbqV9povVVp/view?usp=sharing';
+
   return (
     <div className="h-full flex items-end">
       {/** ABOUT ME PARAGRAPH */}
@@ -33,7 +39,7 @@ const AboutPage: React.FC<AboutPageProps> = ({}) => {
           <p className="w-[90%]">{pageDescription}</p>
           <SocialMediaItem
             label={pageLinksResume}
-            href="https://drive.google.com/file/d/12oRetIKRQguKSOMrBFELBGkpL2yfuzJd/view?usp=drive_link"
+            href={resumeLink}
             icon={<ArrowDownToLine size={16} />}
             isHideMobile={false}
           />
