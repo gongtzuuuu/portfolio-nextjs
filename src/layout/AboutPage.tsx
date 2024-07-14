@@ -19,10 +19,8 @@ const AboutPage: React.FC<AboutPageProps> = ({}) => {
         <hr />
         <div className="flex flex-col space-y-8">
           <p className="w-[90%]">
-            I am a junior web developer with a background in project management
-            and art. With enthusiasm, I am actively seeking employment
-            opportunities that will allow me to make the best use of my skills
-            and further develop them.
+            I am a software engineer with a background in project management and
+            art.
           </p>
           <SocialMediaItem
             label="resume"

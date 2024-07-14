@@ -86,3 +86,13 @@
     scrollbar-width: none; /* Firefox */
   }
 }
+
+::-moz-selection {
+  color: aliceblue;
+  background: #937829;
+}
+
+::selection {
+  color: aliceblue;
+  background: #937829;
+}
