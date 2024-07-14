@@ -7,6 +7,13 @@ import { FolderOpenDot, Gem } from 'lucide-react';
 
 interface HomePageProps {
   activeLocale: string;
+  pageTitle: string;
+  pageDescription:
+    | string
+    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+    | React.ReactNodeArray;
+  linkWork: string;
+  linkAbout: string;
 }
 
 const TitleAnimation = ({ children }: { children: ReactNode }) => (
@@ -37,6 +44,7 @@ const TextAnimation = ({
       visible: { y: 0, opacity: 1 },
       hidden: { y: 10, opacity: 0 },
     }}
+    className="text-center"
   >
     {children}
   </motion.div>
@@ -69,7 +77,13 @@ const HoverEffect = ({ children }: { children: ReactNode }) => (
   </motion.div>
 );
 
-const HomePage: React.FC<HomePageProps> = ({ activeLocale }) => {
+const HomePage: React.FC<HomePageProps> = ({
+  activeLocale,
+  pageTitle,
+  pageDescription,
+  linkWork,
+  linkAbout,
+}) => {
   return (
     <motion.div
       initial="hidden"
@@ -79,22 +93,16 @@ const HomePage: React.FC<HomePageProps> = ({ activeLocale }) => {
     >
       <TitleAnimation>
         <h1 className="text-3xl md:text-4xl font-bold text-center">
-          Hello, I am Tzu-Yun Liang
+          {pageTitle}
         </h1>
       </TitleAnimation>
-      <TextAnimation delay={0.2}>
-        <p className="text-center">
-          I am a software engineer & product designer
-          <br />
-          who loves to deliver high-quality digital solutions.
-        </p>
-      </TextAnimation>
+      <TextAnimation delay={0.2}>{pageDescription}</TextAnimation>
       <div className="flex flex-col md:flex-row space-x-6">
         <LinkAnimation delay={0.4}>
           <HoverEffect>
             <Link href={`${activeLocale}/work`} className="flex items-center">
               <FolderOpenDot size={16} className="mr-1" />
-              see my project
+              {linkWork}
             </Link>
           </HoverEffect>
         </LinkAnimation>
@@ -102,7 +110,7 @@ const HomePage: React.FC<HomePageProps> = ({ activeLocale }) => {
           <HoverEffect>
             <Link href={`${activeLocale}/about`} className="flex items-center">
               <Gem size={16} className="mr-1" />
-              more about me
+              {linkAbout}
             </Link>
           </HoverEffect>
         </LinkAnimation>

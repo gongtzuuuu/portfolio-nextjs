@@ -6,7 +6,22 @@ interface HomePageProps {}
 
 const Page: React.FC<HomePageProps> = ({}) => {
   const activeLocale = useLocale();
-  return <HomePage activeLocale={activeLocale} />;
+  const t = useTranslations('HomePage');
+  const pageTitle = t('title');
+  const pageDescription = t.rich('description', {
+    break: (chunks: any) => <br />,
+  });
+  const linkWork = t('links.works');
+  const linkAbout = t('links.about');
+  return (
+    <HomePage
+      activeLocale={activeLocale}
+      pageTitle={pageTitle}
+      pageDescription={pageDescription}
+      linkWork={linkWork}
+      linkAbout={linkAbout}
+    />
+  );
 };
 
 export default Page;
