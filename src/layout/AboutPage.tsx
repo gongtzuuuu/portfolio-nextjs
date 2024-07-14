@@ -33,7 +33,7 @@ const AboutPage: React.FC<AboutPageProps> = ({}) => {
           <p className="w-[90%]">{pageDescription}</p>
           <SocialMediaItem
             label={pageLinksResume}
-            href="#"
+            href="https://drive.google.com/file/d/12oRetIKRQguKSOMrBFELBGkpL2yfuzJd/view?usp=drive_link"
             icon={<ArrowDownToLine size={16} />}
             isHideMobile={false}
           />

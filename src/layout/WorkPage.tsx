@@ -8,9 +8,17 @@ import { workLabelToSegment } from '@/lib/url-utils';
 
 interface WorkPageProps {
   activeLocale: string;
+  pageTitle: string;
+  workTypePersonal: string;
+  workTypeCollaboration: string;
 }
 
-const WorkPage: React.FC<WorkPageProps> = ({ activeLocale }) => {
+const WorkPage: React.FC<WorkPageProps> = ({
+  activeLocale,
+  pageTitle,
+  workTypePersonal,
+  workTypeCollaboration,
+}) => {
   const router = useRouter();
   const [selectWorkIndex, setSelectWorkIndex] = useState<number | null>(null);
   const [selectWork, setSelectWork] = useState<WorkType>(works[0]);
@@ -54,7 +62,7 @@ const WorkPage: React.FC<WorkPageProps> = ({ activeLocale }) => {
       {/* WORK EXPERIENCE LIST */}
       <div className="w-full md:w-[50%] max-h-96 overflow-y-scroll no-scrollbar flex flex-col space-y-4 px-0 md:p-4">
         <div className="space-y-2">
-          <h3 className="text-4xl font-bold">work</h3>
+          <h3 className="text-4xl font-bold">{pageTitle}</h3>
         </div>
         <AnimatePresence>
           {works.map((work) => (
@@ -75,7 +83,9 @@ const WorkPage: React.FC<WorkPageProps> = ({ activeLocale }) => {
                   {work.label}{' '}
                 </motion.h3>
                 <p className="text-xs font-extralight mr-2">
-                  {`${work.date} / ${work.type}`}
+                  {activeLocale === 'en'
+                    ? `${work.date.en} / ${work.type.en}`
+                    : `${work.date.zh} / ${work.type.zh}`}
                 </p>
               </div>
             </Fragment>

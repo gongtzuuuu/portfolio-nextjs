@@ -8,9 +8,11 @@ import { works, WorkType } from '@/lib/works';
 import { segmentToWorkLabel } from '@/lib/url-utils';
 import { TechStack } from '@/lib/enums';
 
-interface WorkDetailPageProps {}
+interface WorkDetailPageProps {
+  pageLink: string;
+}
 
-const WorkDetailPage: React.FC<WorkDetailPageProps> = ({}) => {
+const WorkDetailPage: React.FC<WorkDetailPageProps> = ({ pageLink }) => {
   const pathname = usePathname();
   const router = useRouter();
   const [currentWork, setCurrentWork] = useState<WorkType | undefined>();
@@ -66,7 +68,7 @@ const WorkDetailPage: React.FC<WorkDetailPageProps> = ({}) => {
               className="text-xs font-extralight hover:cursor-pointer"
               onClick={() => router.push(`/${currentLocale}/work`)}
             >
-              {`< Back to List`}
+              {`< ${pageLink}`}
             </p>
           </div>
           <hr />
@@ -75,19 +77,25 @@ const WorkDetailPage: React.FC<WorkDetailPageProps> = ({}) => {
               <span>
                 <Info size={14} className="mr-1" />
               </span>
-              {`${currentWork.date} / ${currentWork.type}`}
+              {currentLocale === 'en'
+                ? `${currentWork.date.en} / ${currentWork.type.en}`
+                : `${currentWork.date.zh} / ${currentWork.type.zh}`}
             </p>
             <div className="flex">
               <Globe size={14} className="mr-1" />
-              {currentWork.links.map((link, index) => (
-                <Link
-                  key={index}
-                  href={link.url}
-                  className="text-xs font-extralight mr-2 flex"
-                >
-                  {`${link.name}${index + 1 !== currentWork.links.length ? ' / ' : ''}`}
-                </Link>
-              ))}
+              {currentWork.links.map((link, index) => {
+                const linkLabel = currentLocale === 'en' ? link.en : link.zh;
+                return (
+                  <Link
+                    key={index}
+                    href={link.url}
+                    className="text-xs font-extralight mr-2 flex"
+                    target="_blank"
+                  >
+                    {`${linkLabel}${index + 1 !== currentWork.links.length ? ' / ' : ''}`}
+                  </Link>
+                );
+              })}
             </div>
             <div className="flex">
               <Layers3 size={14} className="mr-1" />
@@ -99,10 +107,13 @@ const WorkDetailPage: React.FC<WorkDetailPageProps> = ({}) => {
             </div>
             <hr />
             {currentLocale === 'en' &&
-              currentWork.descEng.map((desc, index) => (
+              currentWork.desc.en.map((desc, index) => (
                 <p key={index}>{desc}</p>
               ))}
-            {currentLocale === 'zh' && <p>{currentWork.descMand}</p>}
+            {currentLocale === 'zh' &&
+              currentWork.desc.zh.map((desc, index) => (
+                <p key={index}>{desc}</p>
+              ))}
           </div>
         </div>
       </div>
