@@ -41,5 +41,9 @@
       "personal": "個人專案",
       "collaboration": "團隊協作專案"
     }
+  },
+  "NotFoundPage": {
+    "title": "404 找不到頁面",
+    "description": " 抱歉，您所查找的頁面不存在。"
   }
 }

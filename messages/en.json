@@ -41,5 +41,9 @@
       "personal": "Personal Project",
       "collaboration": "Collaboration Project"
     }
+  },
+  "NotFoundPage": {
+    "title": "404 Not Found",
+    "description": "Sorry, the page you are looking for does not exist."
   }
 }
