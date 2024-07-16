@@ -11,13 +11,15 @@ export const TechStack: TechStackType = {
   MATERIALUI: 'Material UI',
   SHADCN: 'shadcn',
   FRAMERMOTION: 'Framer Motion',
+  STORYBOOK: 'Storybook',
+
+  REACT: 'React',
+  NEXT: 'Next.js',
 
   NODE: 'Node.js',
   EXPRESS: 'Express.js',
   MONGODB: 'MongoDB',
   FIREBASE: 'Firebase',
   CHATGPT: 'ChatGPT',
-
-  REACT: 'React',
-  NEXT: 'Next.js',
+  AWS: 'AWS',
 } as const;

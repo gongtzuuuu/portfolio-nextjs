@@ -2,7 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { ArrowDownToLine, Headset } from 'lucide-react';
-import PlaceHolderImg from '@/assets/scott-webb-PkJOP7JfVfk-unsplash.jpg';
 import SocialMediaItem from '@/components/SocialMediaItem';
 
 interface AboutPageProps {}
@@ -48,7 +47,7 @@ const AboutPage: React.FC<AboutPageProps> = ({}) => {
       {/** ABOUT ME IMAGE */}
       <div className="h-[200px] w-[50%] hidden md:flex px-4 pt-4">
         <Image
-          src={PlaceHolderImg}
+          src="/about.png"
           alt="Menu Image"
           className="w-full h-full rounded-tr-2xl object-cover"
           width={500}
