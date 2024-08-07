@@ -44,6 +44,7 @@
   },
   "NotFoundPage": {
     "title": "404 找不到頁面",
-    "description": " 抱歉，您所查找的頁面不存在。"
+    "description": " 抱歉，您所查找的頁面不存在。",
+    "link": "回到首頁"
   }
 }
