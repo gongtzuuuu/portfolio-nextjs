@@ -5,6 +5,7 @@ import '@/styles/notfound.css';
 
 const NotFound = () => {
   const t = useTranslations('NotFoundPage');
+
   return (
     <div className="flex flex-col items-center">
       <h3 className="text-4xl font-bold mb-2">{t('title')}</h3>
