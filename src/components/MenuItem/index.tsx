@@ -33,7 +33,7 @@ const menuItemVariants = {
   },
 };
 
-const AnimationContainer = ({
+export const AnimationContainer = ({
   id,
   children,
 }: {

@@ -1,11 +1,11 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname, useRouter } from 'next/navigation';
 import { Info, Globe, Layers3 } from 'lucide-react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { works, WorkType } from '@/lib/works';
 import { segmentToWorkLabel } from '@/lib/url-utils';
+import { works, WorkType } from '@/lib/works';
 import { TechStack } from '@/lib/enums';
 
 interface WorkDetailPageProps {
@@ -48,21 +48,28 @@ const WorkDetailPage: React.FC<WorkDetailPageProps> = ({ pageLink }) => {
 
   if (currentWork)
     return (
-      <div className="h-full flex flex-col mt-5 md:mt-0 md:flex-row md:items-end">
-        {/** WORK IMAGE */}
-        {/* <div className="h-[200px] w-[50%] hidden md:flex px-4 pt-4"></div> */}
-        {/** style={{ backgroundImage: `url(${selectWork.src})` }} */}
-        <AnimatePresence>
-          <div className="h-[200px] w-full md:w-[50%] flex-col mb-4 md:mb-0 md:px-4 md:pt-4 overflow-hidden">
-            <motion.img
-              src={currentWork.src}
-              className="rounded-tr-2xl object-cover w-full h-full bg-cover bg-center"
-            />
-          </div>
-        </AnimatePresence>
+      <div className="h-full flex items-end flex-col md:flex-row space-x-5 overflow-y-scroll no-scrollbar">
+        {/** WORK IMAGE - PC */}
+        <div className="relative hidden h-[200px] w-full md:w-[50%] md:flex flex-col mb-4 md:mb-0 md:px-4 md:pt-4 overflow-hidden">
+          <Image
+            fill
+            alt={currentWork.label}
+            src={currentWork.src}
+            className="rounded-tr-2xl object-cover w-full h-full bg-cover bg-center"
+          />
+        </div>
         {/* WORK DETAILS */}
-        <div className="w-full md:w-[50%] max-h-96 overflow-y-scroll no-scrollbar flex flex-col space-y-4 px-0 md:p-4">
+        <div className="w-full md:w-[50%] max-h-96 md:overflow-y-scroll no-scrollbar flex flex-col space-y-4 px-0 md:p-4">
           <div className="flex flex-wrap space-y-2 justify-between items-end">
+            {/** WORK IMAGE - Mobile */}
+            <div className="relative md:hidden h-[160px] w-full mb-4 overflow-hidden">
+              <Image
+                fill
+                alt={currentWork.label}
+                src={currentWork.src}
+                className="rounded-tr-2xl object-cover w-full h-full bg-cover bg-center"
+              />
+            </div>
             <h3 className="text-4xl font-bold">{currentWork.label}</h3>
             <p
               className="text-xs font-extralight hover:cursor-pointer"
@@ -73,23 +80,23 @@ const WorkDetailPage: React.FC<WorkDetailPageProps> = ({ pageLink }) => {
           </div>
           <hr />
           <div className="space-y-2">
-            <p className="flex text-xs font-extralight mr-2">
+            <p className="flex flex-wrap items-center text-sm font-extralight mr-2">
               <span>
-                <Info size={14} className="mr-1" />
+                <Info size={16} className="mr-2" />
               </span>
               {currentLocale === 'en'
                 ? `${currentWork.date.en} / ${currentWork.type.en}`
                 : `${currentWork.date.zh} / ${currentWork.type.zh}`}
             </p>
-            <div className="flex">
-              <Globe size={14} className="mr-1" />
+            <div className="flex flex-wrap items-center">
+              <Globe size={14} className="mr-2" />
               {currentWork.links.map((link, index) => {
                 const linkLabel = currentLocale === 'en' ? link.en : link.zh;
                 return (
                   <Link
                     key={index}
                     href={link.url}
-                    className="text-xs font-extralight mr-2 flex"
+                    className="text-sm font-extralight mr-2 flex"
                     target="_blank"
                   >
                     {`${linkLabel}${index + 1 !== currentWork.links.length ? ' / ' : ''}`}
@@ -97,10 +104,10 @@ const WorkDetailPage: React.FC<WorkDetailPageProps> = ({ pageLink }) => {
                 );
               })}
             </div>
-            <div className="flex">
-              <Layers3 size={14} className="mr-1" />
+            <div className="flex flex-wrap items-center">
+              <Layers3 size={14} className="mr-2" />
               {currentWork.techStack.map((tech, index) => (
-                <p key={index} className="text-xs font-extralight mr-2 flex">
+                <p key={index} className="text-sm font-extralight mr-2 flex">
                   {`${TechStack[tech]}${index + 1 !== currentWork.techStack.length ? ' / ' : ''}`}
                 </p>
               ))}
@@ -108,12 +115,17 @@ const WorkDetailPage: React.FC<WorkDetailPageProps> = ({ pageLink }) => {
             <hr />
             {currentLocale === 'en' &&
               currentWork.desc.en.map((desc, index) => (
-                <p key={index}>{desc}</p>
+                <p key={index} className="mb-5">
+                  {desc}
+                </p>
               ))}
             {currentLocale === 'zh' &&
               currentWork.desc.zh.map((desc, index) => (
-                <p key={index}>{desc}</p>
+                <p key={index} className="mb-5">
+                  {desc}
+                </p>
               ))}
+            <div>🚀</div>
           </div>
         </div>
       </div>

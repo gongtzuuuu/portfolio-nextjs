@@ -3,7 +3,6 @@ import React, { ReactNode } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FolderOpenDot, Gem } from 'lucide-react';
-// import TextEffect from '@/components/TextEffect';
 
 interface HomePageProps {
   activeLocale: string;
@@ -97,7 +96,7 @@ const HomePage: React.FC<HomePageProps> = ({
         </h1>
       </TitleAnimation>
       <TextAnimation delay={0.2}>{pageDescription}</TextAnimation>
-      <div className="flex flex-col md:flex-row space-x-6">
+      <div className="flex flex-col md:flex-row md:space-x-6">
         <LinkAnimation delay={0.4}>
           <HoverEffect>
             <Link href={`${activeLocale}/work`} className="flex items-center">

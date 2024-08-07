@@ -33,7 +33,7 @@ const AboutPage: React.FC<AboutPageProps> = ({}) => {
         <div className="space-y-2">
           <h3 className="text-4xl font-bold">{pageTitle}</h3>
         </div>
-        <hr />
+        <hr className="w-[90%]" />
         <div className="flex flex-col space-y-8">
           <p className="w-[90%]">{pageDescription}</p>
           <SocialMediaItem
@@ -45,13 +45,12 @@ const AboutPage: React.FC<AboutPageProps> = ({}) => {
         </div>
       </div>
       {/** ABOUT ME IMAGE */}
-      <div className="h-[200px] w-[50%] hidden md:flex px-4 pt-4">
+      <div className="relative h-[200px] w-[50%] hidden md:flex px-4 pt-4">
         <Image
+          fill
           src="/about.png"
           alt="Menu Image"
           className="w-full h-full rounded-tr-2xl object-cover"
-          width={500}
-          height={500}
         />
       </div>
     </div>
