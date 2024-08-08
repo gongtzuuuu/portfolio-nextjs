@@ -83,7 +83,7 @@ const MenuItemGroup: React.FC<MenuItemGroupProps> = ({}) => {
     };
   }, [isLoading]);
 
-  //TODO: Ensure that the menu closes after the next page is loaded
+  // Ensure that the menu closes after the next page is loaded
   const handleMenuClose = (nextUrl: string) => {
     nextUrl.slice(-1) === '/' ? (nextUrl = nextUrl.slice(0, -1)) : nextUrl;
     const currentUrl =
