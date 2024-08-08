@@ -70,6 +70,7 @@ const MenuItemGroup: React.FC<MenuItemGroupProps> = ({}) => {
   const localActive = useLocale();
   const { setIsMenuOpen } = useMenuContext();
 
+  //TODO: Ensure that the menu closes after the next page is loaded
   const handleMenuClose = () => setTimeout(() => setIsMenuOpen(false), 500);
 
   return (

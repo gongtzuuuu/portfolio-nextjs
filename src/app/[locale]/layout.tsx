@@ -7,6 +7,7 @@ import Header from '@/components/Header';
 import Body from '@/components/Body';
 import Footer from '@/components/Footer';
 import Cursor from '@/components/Cursor';
+import Canvas from '@/components/Canvas';
 import NavigationEvents from '@/components/NavigationEvents';
 // ========== Utils ========== //
 import { ThemeProvider } from '@/context/ThemeProvider';
@@ -40,7 +41,7 @@ export default function RootLayout({
         {/* <Cursor /> */}
         <ThemeProvider>
           <MenuProvider>
-            <main className="flex min-h-screen flex-col justify-between p-12 md:p-24 lg:p-24">
+            <main className="flex min-h-screen flex-col justify-between p-12 md:p-24 lg:p-24 z-10">
               <Header />
               <Body>{children}</Body>
               <Suspense fallback={null}>
