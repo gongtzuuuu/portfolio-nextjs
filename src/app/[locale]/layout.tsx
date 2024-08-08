@@ -1,13 +1,21 @@
 import type { Metadata } from 'next';
-import React, { ReactNode } from 'react';
-import { Inter } from 'next/font/google';
+import React, { ReactNode, Suspense } from 'react';
+import { Inter, Noto_Sans } from 'next/font/google';
+import NextTopLoader from 'nextjs-toploader';
+// ========== Components ========== //
+import Header from '@/components/Header';
+import Body from '@/components/Body';
+import Footer from '@/components/Footer';
+import Cursor from '@/components/Cursor';
+import Canvas from '@/components/Canvas';
+import NavigationEvents from '@/components/NavigationEvents';
+// ========== Utils ========== //
 import { ThemeProvider } from '@/context/ThemeProvider';
 import { MenuProvider } from '@/context/MenuProvider';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import '@/styles/globals.css';
-import Body from '@/components/Body';
+import '@/styles/style.css';
 
+const notoSans = Noto_Sans({ subsets: ['latin'] });
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -28,12 +36,17 @@ export default function RootLayout({
 }: Readonly<RootLayoutProps>) {
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={notoSans.className}>
+        <NextTopLoader color="#937829" showSpinner={false} />
+        {/* <Cursor /> */}
         <ThemeProvider>
           <MenuProvider>
-            <main className="flex min-h-screen flex-col items-center justify-between p-24">
+            <main className="flex min-h-screen flex-col justify-between p-12 md:p-24 lg:p-24 z-10">
               <Header />
               <Body>{children}</Body>
+              <Suspense fallback={null}>
+                <NavigationEvents />
+              </Suspense>
               <Footer />
             </main>
           </MenuProvider>

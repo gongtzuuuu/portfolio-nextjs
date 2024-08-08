@@ -1,30 +1,30 @@
 'use client';
 import React, { useTransition } from 'react';
+import Link from 'next/link';
 import { useLocale } from 'next-intl';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 const LangSelect = () => {
-  const [isPending, startTransition] = useTransition();
   const router = useRouter();
+  const pathname = usePathname();
+  const segment = pathname.split('/');
   const localActive = useLocale();
+  const [isPending, startTransition] = useTransition();
 
-  const handleLangChange = (locale: string) => {
-    startTransition(() => {
-      router.replace(`/${locale}`);
-    });
-  };
+  // const handleLangChange = (locale: string) => {
+  //   const pathnameArray = pathname.split('/');
+  //   startTransition(() => {
+  //     router.push(`/${locale}/${pathnameArray.slice(2).join('/')}`);
+  //   });
+  // };
 
   return (
     <div>
       {localActive === 'en' && (
-        <p className="cursor-pointer" onClick={() => handleLangChange('zh')}>
-          ZH
-        </p>
+        <Link href={`/zh/${segment.slice(2).join('/')}`}>ZH</Link>
       )}
       {localActive === 'zh' && (
-        <p className="cursor-pointer" onClick={() => handleLangChange('en')}>
-          EN
-        </p>
+        <Link href={`/en/${segment.slice(2).join('/')}`}>EN</Link>
       )}
     </div>
   );

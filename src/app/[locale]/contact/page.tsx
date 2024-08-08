@@ -1,16 +1,21 @@
 import React from 'react';
 import { useTranslations } from 'next-intl';
+import ContactPage from '@/layout/ContactPage';
 
 interface ContactPageProps {}
 
-const ContactPage: React.FC<ContactPageProps> = ({}) => {
-  const t = useTranslations('HomePage');
+const Page: React.FC<ContactPageProps> = ({}) => {
+  const t = useTranslations('ContactPage');
+  const pageTitle = t('title');
+  const columnEmail = t('columns.email');
+  const columnSocalMedia = t('columns.social');
   return (
-    <div className="container flex flex-col items-center">
-      <h1 className="text-4xl font-bold">Hello</h1>
-      <p>{t('description')}</p>
-    </div>
+    <ContactPage
+      pageTitle={pageTitle}
+      columnEmail={columnEmail}
+      columnSocalMedia={columnSocalMedia}
+    />
   );
 };
 
-export default ContactPage;
+export default Page;

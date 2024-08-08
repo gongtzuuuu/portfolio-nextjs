@@ -1,16 +1,27 @@
 import React from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
+import HomePage from '@/layout/HomePage';
 
 interface HomePageProps {}
 
-const HomePage: React.FC<HomePageProps> = ({}) => {
+const Page: React.FC<HomePageProps> = ({}) => {
+  const activeLocale = useLocale();
   const t = useTranslations('HomePage');
+  const pageTitle = t('title');
+  const pageDescription = t.rich('description', {
+    break: (chunks: any) => <br />,
+  });
+  const linkWork = t('links.works');
+  const linkAbout = t('links.about');
   return (
-    <div id="home-page" className="container flex flex-col items-center">
-      <h1 className="text-4xl font-bold">{t('title')}</h1>
-      <p>{t('description')}</p>
-    </div>
+    <HomePage
+      activeLocale={activeLocale}
+      pageTitle={pageTitle}
+      pageDescription={pageDescription}
+      linkWork={linkWork}
+      linkAbout={linkAbout}
+    />
   );
 };
 
-export default HomePage;
+export default Page;
