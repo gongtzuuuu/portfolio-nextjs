@@ -1,0 +1,50 @@
+{
+  "HomePage": {
+    "title": "Hello, 我是 Lizzy!",
+    "description": "我是一名前端軟體工程師<break></break>致力於提供高品質的數位解決方案",
+    "links": {
+      "works": "查看作品集",
+      "about": "更多關於我"
+    }
+  },
+  "AboutPage": {
+    "title": "關於我",
+    "description": "我目前是一名前端軟體工程師，擁有豐富的專案管理經驗和當代藝術背景。經常參與跨部門溝通協作，包含後端開發、UI/UX設計、專案管理等團隊。<break></break>主要使用Next.js、React、TypeScript等當代網站開發技術，整合系統分析與設計及 API 串接等多元技能，將客戶需求轉化為程式碼，負責與使用者介面相關功能的開發、測試與維護。同時，我也具備資訊安全、版本控制與專案開發等觀念，在確保產品功能符合業務需求之餘，控制並降低可預期的風險。",
+    "links": {
+      "contact": "與我聯絡",
+      "resume": "下載我的履歷"
+    }
+  },
+  "ContactPage": {
+    "title": "與我聯絡",
+    "columns": {
+      "email": "電子信箱",
+      "social": "社群連結"
+    }
+  },
+  "WorkPage": {
+    "title": "作品集",
+    "type": {
+      "personal": "個人專案",
+      "collaboration": "團隊協作專案"
+    }
+  },
+  "WorkDetailPage": {
+    "links": {
+      "back": "回到作品列表",
+      "deploy": "部署版本",
+      "github": "GitHub連結",
+      "githubFrontend": "GitHub連結（前端）",
+      "githubBackend": "GitHub連結（後端）"
+    },
+    "type": {
+      "personal": "個人專案",
+      "collaboration": "團隊協作專案"
+    }
+  },
+  "NotFoundPage": {
+    "title": "404 找不到頁面",
+    "description": " 抱歉，您所查找的頁面不存在。",
+    "link": "回到首頁"
+  }
+}

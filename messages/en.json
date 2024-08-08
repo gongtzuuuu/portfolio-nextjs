@@ -1,0 +1,50 @@
+{
+  "HomePage": {
+    "title": "Hello, I am Tzu-Yun Liang",
+    "description": "I am a software engineer and product designer<break></break>who loves delivering high-quality digital solutions.",
+    "links": {
+      "works": "see my projects",
+      "about": "more about me"
+    }
+  },
+  "AboutPage": {
+    "title": "about me",
+    "description": "I enjoy collaborating with talented teams – including backend developers, UI/UX designers, and stakeholders – to bring top-notch software solutions to life.<break></break>With a diverse skill set in Next.js, React, TypeScript, UI/UX design, and API integration, I aim to contribute effectively. Additionally, I have honed my skills in information security, version control, and project management to ensure a smooth development process.",
+    "links": {
+      "contact": "contact me",
+      "resume": "download my resume"
+    }
+  },
+  "ContactPage": {
+    "title": "contact me",
+    "columns": {
+      "email": "Email",
+      "social": "Social Media"
+    }
+  },
+  "WorkPage": {
+    "title": "my projects",
+    "type": {
+      "personal": "Personal Project",
+      "collaboration": "Collaboration Project"
+    }
+  },
+  "WorkDetailPage": {
+    "links": {
+      "back": "Back to projects",
+      "deploy": "Deploy Link",
+      "github": "GitHub Repository",
+      "githubFrontend": "Frontend Repository",
+      "githubBackend": "Backend Repository"
+    },
+    "type": {
+      "personal": "Personal Project",
+      "collaboration": "Collaboration Project"
+    }
+  },
+  "NotFoundPage": {
+    "title": "404 Not Found",
+    "description": "Sorry, the page you are looking for does not exist.",
+    "link": "Back to Home"
+  }
+}
