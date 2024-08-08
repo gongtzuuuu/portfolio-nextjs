@@ -2,17 +2,16 @@
 
 import { useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { useMenuContext } from '@/context/MenuProvider';
 
 const NavigationEvents = () => {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const { setIsMenuOpen } = useMenuContext();
 
   useEffect(() => {
-    const url = `${pathname}?${searchParams}`;
-    console.log(url);
     // You can now use the current URL
-    // ...
-  }, [pathname, searchParams]);
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   return null;
 };

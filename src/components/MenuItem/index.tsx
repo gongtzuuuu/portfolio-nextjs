@@ -1,20 +1,12 @@
 'use client';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, use, useEffect, useState } from 'react';
 import Link from 'next/link';
+import Router from 'next/router';
+import { usePathname } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { useMenuContext } from '@/context/MenuProvider';
 import SocialMediaItem from '../SocialMediaItem';
-
-interface MenuItemProps {
-  id: number;
-  href: string;
-  onClick: () => void;
-  number: string;
-  label: string;
-}
-
-interface MenuItemGroupProps {}
 
 const menuItemVariants = {
   open: {
@@ -52,6 +44,14 @@ export const AnimationContainer = ({
   );
 };
 
+interface MenuItemProps {
+  id: number;
+  href: string;
+  onClick?: () => void;
+  number: string;
+  label: string;
+}
+
 const MenuItem = (props: MenuItemProps) => {
   const { id, href, onClick, number, label } = props;
   return (
@@ -66,12 +66,34 @@ const MenuItem = (props: MenuItemProps) => {
   );
 };
 
+interface MenuItemGroupProps {}
+
 const MenuItemGroup: React.FC<MenuItemGroupProps> = ({}) => {
   const localActive = useLocale();
+  const pathname = usePathname();
   const { setIsMenuOpen } = useMenuContext();
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const handleRouteChangeComplete = () => setIsLoading(false);
+    Router.events.on('routeChangeComplete', handleRouteChangeComplete);
+
+    return () => {
+      Router.events.off('routeChangeComplete', handleRouteChangeComplete);
+    };
+  }, [isLoading]);
 
   //TODO: Ensure that the menu closes after the next page is loaded
-  const handleMenuClose = () => setTimeout(() => setIsMenuOpen(false), 500);
+  const handleMenuClose = (nextUrl: string) => {
+    nextUrl.slice(-1) === '/' ? (nextUrl = nextUrl.slice(0, -1)) : nextUrl;
+    const currentUrl =
+      pathname.slice(-1) === '/' ? pathname.slice(0, -1) : pathname;
+
+    if (pathname === nextUrl) {
+      setIsMenuOpen(false);
+    }
+    setIsLoading(true);
+  };
 
   return (
     <>
@@ -81,28 +103,28 @@ const MenuItemGroup: React.FC<MenuItemGroupProps> = ({}) => {
           <MenuItem
             id={0}
             href={`/${localActive}/`}
-            onClick={handleMenuClose}
+            onClick={() => handleMenuClose(`/${localActive}/`)}
             number="01"
             label="HOME"
           />
           <MenuItem
             id={1}
             href={`/${localActive}/about`}
-            onClick={handleMenuClose}
+            onClick={() => handleMenuClose(`/${localActive}/about`)}
             number="02"
             label="ABOUT"
           />
           <MenuItem
             id={2}
             href={`/${localActive}/work`}
-            onClick={handleMenuClose}
+            onClick={() => handleMenuClose(`/${localActive}/work`)}
             number="03"
             label="WORK"
           />
           <MenuItem
             id={3}
             href={`/${localActive}/contact`}
-            onClick={handleMenuClose}
+            onClick={() => handleMenuClose(`/${localActive}/contact`)}
             number="04"
             label="CONTACT"
           />
