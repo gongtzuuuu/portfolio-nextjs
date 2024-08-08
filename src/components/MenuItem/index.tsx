@@ -57,7 +57,7 @@ const MenuItem = (props: MenuItemProps) => {
   return (
     <AnimationContainer id={id}>
       <Link href={href} onClick={onClick}>
-        <h3 className="text-4xl md:text-6xl font-bold">
+        <h3 className="text-4xl md:text-6xl font-extrabold">
           <span className="text-base font-extralight mr-2">{number}</span>
           {label}
         </h3>
@@ -89,7 +89,7 @@ const MenuItemGroup: React.FC<MenuItemGroupProps> = ({}) => {
     const currentUrl =
       pathname.slice(-1) === '/' ? pathname.slice(0, -1) : pathname;
 
-    if (pathname === nextUrl) {
+    if (currentUrl === nextUrl) {
       setIsMenuOpen(false);
     }
     setIsLoading(true);
