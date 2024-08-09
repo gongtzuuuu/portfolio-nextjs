@@ -1,9 +1,15 @@
 import React from 'react';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import AboutPage from '@/layout/AboutPage';
 
-interface AboutPageProps {}
+interface AboutPageProps {
+  params: {
+    locale: string;
+  };
+}
 
-const Page: React.FC<AboutPageProps> = ({}) => {
+const Page: React.FC<AboutPageProps> = ({ params: { locale } }) => {
+  unstable_setRequestLocale(locale);
   return <AboutPage />;
 };
 
