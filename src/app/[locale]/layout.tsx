@@ -20,7 +20,6 @@ import '@/styles/style.css';
 
 const notoSans = Noto_Sans({
   subsets: ['latin'],
-  weight: '100',
 });
 // const inter = Inter({ subsets: ['latin'] });
 

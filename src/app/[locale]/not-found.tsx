@@ -1,17 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
 import '@/styles/notfound.css';
 
-interface NotFoundProps {
-  params: {
-    locale: string;
-  };
-}
+interface NotFoundProps {}
 
-const NotFound: React.FC<NotFoundProps> = ({ params: { locale } }) => {
-  unstable_setRequestLocale(locale);
+const NotFound: React.FC<NotFoundProps> = ({}) => {
   const t = useTranslations('NotFoundPage');
 
   return (
