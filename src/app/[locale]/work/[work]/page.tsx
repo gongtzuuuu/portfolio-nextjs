@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import WorkDetailPage from '@/layout/WorkDetailPage';
 
 interface PageProps {}

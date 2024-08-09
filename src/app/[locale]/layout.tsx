@@ -11,7 +11,7 @@ import Cursor from '@/components/Cursor';
 import Canvas from '@/components/Canvas';
 import NavigationEvents from '@/components/NavigationEvents';
 // ========== Utils ========== //
-import { NextIntlClientProvider } from 'next-intl';
+// import { NextIntlClientProvider } from 'next-intl';
 import { ThemeProvider } from '@/context/ThemeProvider';
 import { MenuProvider } from '@/context/MenuProvider';
 import '@/styles/globals.css';
@@ -32,32 +32,29 @@ interface RootLayoutProps {
   };
 }
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
   params: { locale },
 }: Readonly<RootLayoutProps>) {
   // Providing all messages to the client side
-  const message = await getMessages();
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={notoSans.className}>
-        <NextIntlClientProvider messages={message}>
-          <NextTopLoader color="#937829" showSpinner={false} />
-          {/* <Cursor /> */}
-          <ThemeProvider>
-            <MenuProvider>
-              <main className="flex min-h-screen flex-col justify-between p-12 md:p-24 lg:p-24 z-10">
-                <Header />
-                <Body>{children}</Body>
-                <Suspense fallback={null}>
-                  <NavigationEvents />
-                </Suspense>
-                <Footer />
-              </main>
-            </MenuProvider>
-          </ThemeProvider>
-        </NextIntlClientProvider>
+        <NextTopLoader color="#937829" showSpinner={false} />
+        {/* <Cursor /> */}
+        <ThemeProvider>
+          <MenuProvider>
+            <main className="flex min-h-screen flex-col justify-between p-12 md:p-24 lg:p-24 z-10">
+              <Header />
+              <Body>{children}</Body>
+              <Suspense fallback={null}>
+                <NavigationEvents />
+              </Suspense>
+              <Footer />
+            </main>
+          </MenuProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
