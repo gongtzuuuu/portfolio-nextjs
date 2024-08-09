@@ -25,7 +25,7 @@ export const useFollowCursor = (ref: RefObject<HTMLElement>) => {
     window.addEventListener('pointermove', handleMouseMove);
 
     return () => window.removeEventListener('pointermove', handleMouseMove);
-  }, []);
+  }, [ref, xPoint, yPoint]);
 
   return { x, y };
 };

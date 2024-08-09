@@ -11,7 +11,7 @@ const NavigationEvents = () => {
   useEffect(() => {
     // You can now use the current URL
     setIsMenuOpen(false);
-  }, [pathname]);
+  }, [pathname, setIsMenuOpen]);
 
   return null;
 };
