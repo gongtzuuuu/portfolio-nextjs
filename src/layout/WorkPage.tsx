@@ -10,9 +10,16 @@ import { ChevronDown } from 'lucide-react';
 interface WorkPageProps {
   activeLocale: string;
   pageTitle: string;
+  workTypePersonal?: string;
+  workTypeCollaboration?: string;
 }
 
-const WorkPage: React.FC<WorkPageProps> = ({ activeLocale, pageTitle }) => {
+const WorkPage: React.FC<WorkPageProps> = ({
+  activeLocale,
+  pageTitle,
+  workTypePersonal,
+  workTypeCollaboration,
+}) => {
   const router = useRouter();
   const [selectWork, setSelectWork] = useState<WorkType>(works[0]);
 

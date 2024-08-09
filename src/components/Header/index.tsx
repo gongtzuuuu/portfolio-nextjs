@@ -1,3 +1,4 @@
+'use server';
 import React from 'react';
 import Link from 'next/link';
 import ThemeSwitch from '@/components/ThemeSwitch';
@@ -8,16 +9,16 @@ interface HeaderProps {}
 
 const Header: React.FC<HeaderProps> = ({}) => {
   return (
-    <div className="w-full flex justify-between">
+    <header className="w-full flex justify-between items-center">
       <Link href="/" className="font-bold">
         TZU
       </Link>
-      <div className="flex space-x-5">
+      <div className="flex items-center space-x-5">
         <ThemeSwitch />
         <LangSelect />
         <MenuToggleButton />
       </div>
-    </div>
+    </header>
   );
 };
 

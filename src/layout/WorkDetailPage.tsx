@@ -44,7 +44,7 @@ const WorkDetailPage: React.FC<WorkDetailPageProps> = ({ pageLink }) => {
         setCurrentLocale('en');
         break;
     }
-  }, []);
+  }, [pathname]);
 
   if (currentWork)
     return (

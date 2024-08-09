@@ -47,8 +47,8 @@ const Canvas = () => {
     }
 
     function initializePts() {
-      const n_x = Math.floor((canvas.width - spacing) / spacing);
-      const n_y = Math.floor((canvas.height - spacing) / spacing);
+      const n_x = canvas ? Math.floor((canvas.width - spacing) / spacing) : 0;
+      const n_y = canvas ? Math.floor((canvas.height - spacing) / spacing) : 0;
       const count = n_x * n_y;
 
       pts_x = new Float64Array(count);

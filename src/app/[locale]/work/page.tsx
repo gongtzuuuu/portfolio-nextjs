@@ -1,10 +1,16 @@
 import React from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import WorkPage from '@/layout/WorkPage';
 
-interface PageProps {}
+interface PageProps {
+  params: {
+    locale: string;
+  };
+}
 
-const Page: React.FC<PageProps> = ({}) => {
+const Page: React.FC<PageProps> = ({ params: { locale } }) => {
+  unstable_setRequestLocale(locale);
   const activeLocale = useLocale();
   const t = useTranslations('WorkPage');
   const pageTitle = t('title');

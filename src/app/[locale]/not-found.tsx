@@ -3,7 +3,9 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import '@/styles/notfound.css';
 
-const NotFound = () => {
+interface NotFoundProps {}
+
+const NotFound: React.FC<NotFoundProps> = ({}) => {
   const t = useTranslations('NotFoundPage');
 
   return (
