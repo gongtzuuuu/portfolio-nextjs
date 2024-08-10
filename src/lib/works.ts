@@ -63,25 +63,20 @@ export const works: WorkType[] = [
     type: { en: 'Personal Project', zh: '個人專案' },
     links: [
       {
-        en: 'Deploy Link',
-        zh: '部署版本',
-        url: '#',
-      },
-      {
         en: 'Github Link',
         zh: 'GitHub連結',
-        url: '#',
+        url: 'https://github.com/gongtzuuuu/portfolio-nextjs.git',
       },
     ],
-    techStack: ['AWS', 'NEXT', 'REACT', 'TYPESCRIPT', 'SHADCN', 'STORYBOOK'],
+    techStack: ['NEXT', 'REACT', 'TYPESCRIPT', 'SHADCN', 'STORYBOOK'],
     desc: {
       en: [
-        `Built from the ground up, the portfolio website utilises a modern tech stack including Next.js, React, TypeScript, Storybook, and Shadcn. Deployment is managed on an AWS EC2 server.`,
+        `Built from the ground up, the portfolio website utilises a modern tech stack including Next.js, React, TypeScript, Storybook, and Shadcn.`,
         `Additionally, it employs the i18n library to handle multi-language versions and integrates Framer Motion to create smooth animations, enhancing the user experience.`,
         `This website serves as a dynamic platform that not only showcases my skills and experience in text and visual design but also brings them to life through the underlying technology. It is a testament to my drive to push boundaries, evolve as a developer, and explore new technologies.`,
       ],
       zh: [
-        `作品集網站採用 Next.js 作為主要的前端開發框架，搭配 React、TypeScript 和 Shadcn 等技術，並將之部署在 AWS 的 EC2 虛擬環境上。同時，這個專案也採用 i18n 來管理多語系版本，結合 Framer Motion 來製作流暢的動畫，進而提升使用者體驗。`,
+        `作品集網站採用 Next.js 作為主要的前端開發框架，搭配 React、TypeScript 和 Shadcn 等前端開發技術。同時，這個專案也採用 i18n / next-itnl 來管理多語系版本，結合 Framer Motion 來製作流暢的動畫，進而提升使用者體驗。`,
         `從設計到開發，再從開發到部署，這個網站不僅是一個展示過往前端開發專案的空間，本身更可以作為一個匯合我目前的開發技術的最佳實例。`,
       ],
     },
