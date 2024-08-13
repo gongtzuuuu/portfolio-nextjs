@@ -50,6 +50,7 @@ const WorkPage: React.FC<WorkPageProps> = ({
               alt={selectWork.label}
               src={selectWork.src}
               className="rounded-tr-2xl object-cover"
+              priority={true}
             />
           </motion.div>
         </AnimatePresence>
