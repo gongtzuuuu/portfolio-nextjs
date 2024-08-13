@@ -51,6 +51,7 @@ const AboutPage: React.FC<AboutPageProps> = ({}) => {
           src="/about.png"
           alt="Menu Image"
           className="w-full h-full rounded-tr-2xl object-cover"
+          priority={true}
         />
       </div>
     </div>
