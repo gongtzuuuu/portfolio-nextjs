@@ -56,6 +56,7 @@ const WorkDetailPage: React.FC<WorkDetailPageProps> = ({ pageLink }) => {
             alt={currentWork.label}
             src={currentWork.src}
             className="rounded-tr-2xl object-cover w-full h-full bg-cover bg-center"
+            priority={true}
           />
         </div>
         {/* WORK DETAILS */}
@@ -68,6 +69,7 @@ const WorkDetailPage: React.FC<WorkDetailPageProps> = ({ pageLink }) => {
                 alt={currentWork.label}
                 src={currentWork.src}
                 className="rounded-tr-2xl object-cover w-full h-full bg-cover bg-center"
+                priority={true}
               />
             </div>
             <h3 className="text-4xl font-bold">{currentWork.label}</h3>
