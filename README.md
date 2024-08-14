@@ -8,7 +8,7 @@ Additionally, it employs the i18n library to handle multi-language versions and 
 
 This website serves as a dynamic platform that not only showcases my skills and experience in text and visual design but also brings them to life through the underlying technology. It is a testament to my drive to push boundaries, evolve as a developer, and explore new technologies.
 
-[Click here to see deploy version](https://portfolio-nextjs-f14ahvxxn-gongtzuuuus-projects.vercel.app)
+[Click here to see deploy version](https://tzu-yun.dev)
 
 ## Tech Stack
 
