@@ -35,12 +35,12 @@ export const works: WorkType[] = [
       {
         en: 'Deploy Link',
         zh: '部署版本',
-        url: '#',
+        url: 'https://vermillion-bubblegum-078df7.netlify.app/',
       },
       {
         en: 'Github Link',
         zh: 'GitHub連結',
-        url: '#',
+        url: 'https://github.com/gongtzuuuu/superchat',
       },
     ],
     techStack: ['CHATGPT', 'FIREBASE', 'REACT', 'TYPESCRIPT', `SHADCN`],
