@@ -20,6 +20,6 @@ export const TechStack: TechStackType = {
   EXPRESS: 'Express.js',
   MONGODB: 'MongoDB',
   FIREBASE: 'Firebase',
-  CHATGPT: 'ChatGPT',
+  CHATGPT: 'OpenAI',
   AWS: 'AWS',
 } as const;
