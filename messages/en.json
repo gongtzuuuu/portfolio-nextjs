@@ -9,7 +9,7 @@
   },
   "AboutPage": {
     "title": "about me",
-    "description": "I enjoy collaborating with talented teams – including backend developers, UI/UX designers, and stakeholders – to bring top-notch software solutions to life.<break></break>With a diverse skill set in Next.js, React, TypeScript, UI/UX design, and API integration, I aim to contribute effectively. Additionally, I have honed my skills in information security, version control, and project management to ensure a smooth development process.",
+    "description": "I enjoy collaborating with talented teams – including backend developers, UI/UX designers, and stakeholders – to bring top-notch software solutions to life.<break></break>With a diverse skill set in Next.js, React, TypeScript, UI/UX design, and API integration, I aim to contribute effectively. Additionally, I have honed my skills in version control and project management to ensure a smooth development process.",
     "links": {
       "contact": "contact me",
       "resume": "download my resume"
