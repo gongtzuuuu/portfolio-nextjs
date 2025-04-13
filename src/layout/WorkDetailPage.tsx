@@ -1,137 +1,138 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { FC, Fragment, useContext } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { usePathname, useRouter } from 'next/navigation';
 import { Info, Globe, Layers3 } from 'lucide-react';
-import { segmentToWorkLabel } from '@/lib/url-utils';
-import { works, WorkType } from '@/lib/works';
+import { ProjectContext } from '@/context/ProjectProvider';
+import { BackToListLink } from '@/components/BackToListLink/BackToListLink';
 import { TechStack } from '@/lib/enums';
+import { Locale } from '@/i18n';
+import { DEFAULT_YELLOW } from '@/const/color';
 
-interface WorkDetailPageProps {
-  pageLink: string;
-}
+const PCImage = ({ alt, src }: { alt: string; src: string }) => (
+  <div className="relative hidden h-[200px] w-full md:w-[50%] md:flex flex-col mb-4 md:mb-0 md:px-4 md:pt-4 overflow-hidden">
+    <img
+      alt={alt}
+      src={src}
+      className="rounded-tr-2xl object-cover w-full h-full bg-cover bg-center"
+      loading="lazy"
+    />
+  </div>
+);
 
-const WorkDetailPage: React.FC<WorkDetailPageProps> = ({ pageLink }) => {
-  const pathname = usePathname();
-  const router = useRouter();
-  const [currentWork, setCurrentWork] = useState<WorkType | undefined>();
-  const [currentLocale, setCurrentLocale] = useState<string>('en');
+const MobileImage = ({ alt, src }: { alt: string; src: string }) => (
+  <div className="relative md:hidden h-[160px] w-full mb-4 overflow-hidden">
+    <img
+      alt={alt}
+      src={src}
+      className="rounded-tr-2xl object-cover w-full h-full bg-cover bg-center"
+      loading="lazy"
+    />
+  </div>
+);
 
-  useEffect(() => {
-    const pathnameArray = pathname.split('/');
-    const lowerCaseLabel = segmentToWorkLabel(
-      pathnameArray[pathnameArray.length - 1]
-    );
-    const selectWork = works.find(
-      (work) => work.label.toLowerCase() === lowerCaseLabel
-    );
+type WorkDetailPageProps = {
+  activeLocale: Locale;
+  backToListLinkLabel: string;
+};
 
-    if (selectWork) {
-      setCurrentWork(selectWork);
-    }
+const WorkDetailPage: FC<WorkDetailPageProps> = ({
+  activeLocale,
+  backToListLinkLabel,
+}) => {
+  const { selectedProject } = useContext(ProjectContext);
 
-    const currentLocale = pathnameArray[1];
+  if (!selectedProject) return null;
 
-    switch (currentLocale) {
-      case 'en':
-        setCurrentLocale('en');
-        break;
-      case 'zh':
-        setCurrentLocale('zh');
-        break;
-      default:
-        setCurrentLocale('en');
-        break;
-    }
-  }, [pathname]);
+  const { label, src, techStack, date, type, links, desc } = selectedProject;
 
-  if (currentWork)
+  const renderInfo = () => {
+    const projectDate = activeLocale === 'en' ? date.en : date.zh;
+    const projectType = activeLocale === 'en' ? type.en : type.zh;
+
     return (
-      <div className="h-full flex items-end flex-col md:flex-row space-x-5 overflow-y-scroll no-scrollbar">
-        {/** WORK IMAGE - PC */}
-        <div className="relative hidden h-[200px] w-full md:w-[50%] md:flex flex-col mb-4 md:mb-0 md:px-4 md:pt-4 overflow-hidden">
-          <Image
-            fill
-            alt={currentWork.label}
-            src={currentWork.src}
-            className="rounded-tr-2xl object-cover w-full h-full bg-cover bg-center"
-            priority={true}
-          />
-        </div>
-        {/* WORK DETAILS */}
-        <div className="w-full md:w-[50%] max-h-96 md:overflow-y-scroll no-scrollbar flex flex-col space-y-4 px-0 md:p-4">
-          <div className="flex flex-wrap space-y-2 justify-between items-end">
-            {/** WORK IMAGE - Mobile */}
-            <div className="relative md:hidden h-[160px] w-full mb-4 overflow-hidden">
-              <Image
-                fill
-                alt={currentWork.label}
-                src={currentWork.src}
-                className="rounded-tr-2xl object-cover w-full h-full bg-cover bg-center"
-                priority={true}
-              />
-            </div>
-            <h3 className="text-4xl font-bold">{currentWork.label}</h3>
-            <p
-              className="text-xs font-extralight hover:cursor-pointer"
-              onClick={() => router.push(`/${currentLocale}/work`)}
-            >
-              {`< ${pageLink}`}
-            </p>
-          </div>
-          <hr />
-          <div className="space-y-2">
-            <p className="flex flex-wrap items-center text-sm font-extralight mr-2">
-              <span>
-                <Info size={16} className="mr-2" />
-              </span>
-              {currentLocale === 'en'
-                ? `${currentWork.date.en} / ${currentWork.type.en}`
-                : `${currentWork.date.zh} / ${currentWork.type.zh}`}
-            </p>
-            <div className="flex flex-wrap items-center">
-              <Globe size={14} className="mr-2" />
-              {currentWork.links.map((link, index) => {
-                const linkLabel = currentLocale === 'en' ? link.en : link.zh;
-                return (
-                  <Link
-                    key={index}
-                    href={link.url}
-                    className="text-sm font-extralight mr-2 flex"
-                    target="_blank"
-                  >
-                    {`${linkLabel}${index + 1 !== currentWork.links.length ? ' / ' : ''}`}
-                  </Link>
-                );
-              })}
-            </div>
-            <div className="flex flex-wrap items-center">
-              <Layers3 size={14} className="mr-2" />
-              {currentWork.techStack.map((tech, index) => (
-                <p key={index} className="text-sm font-extralight mr-2 flex">
-                  {`${TechStack[tech]}${index + 1 !== currentWork.techStack.length ? ' / ' : ''}`}
-                </p>
-              ))}
-            </div>
-            <hr />
-            {currentLocale === 'en' &&
-              currentWork.desc.en.map((desc, index) => (
-                <p key={index} className="mb-5">
-                  {desc}
-                </p>
-              ))}
-            {currentLocale === 'zh' &&
-              currentWork.desc.zh.map((desc, index) => (
-                <p key={index} className="mb-5">
-                  {desc}
-                </p>
-              ))}
-            <div>🚀</div>
-          </div>
-        </div>
+      <div className="flex flex-wrap items-center gap-2 text-sm font-light">
+        <Info size={14} className="shrink-0" />
+        <p>{projectDate}</p>
+        <p>{' / '}</p>
+        <p>{projectType}</p>
       </div>
     );
+  };
+
+  const renderLink = () => {
+    return (
+      <div className="flex flex-wrap items-center gap-2 text-sm font-light">
+        <Globe size={14} />
+        {links.map((link, index) => {
+          const linkLabel = activeLocale === 'en' ? link.en : link.zh;
+          return (
+            <Fragment key={index}>
+              <Link
+                href={link.url}
+                target="_blank"
+                className={`hover:text-[${DEFAULT_YELLOW}]`}
+              >
+                {linkLabel}
+              </Link>
+              {index !== links.length - 1 && <p>{' / '}</p>}
+            </Fragment>
+          );
+        })}
+      </div>
+    );
+  };
+
+  const renderTechStack = () => {
+    return (
+      <div className="flex flex-wrap items-center gap-2 text-sm font-light">
+        <Layers3 size={14} />
+        {techStack.map((tech, index) => (
+          <Fragment key={index}>
+            <p>{TechStack[tech]}</p>
+            {index !== techStack.length - 1 && <p>{' / '}</p>}
+          </Fragment>
+        ))}
+      </div>
+    );
+  };
+
+  const renderDescription = () => {
+    const projectDescription = activeLocale === 'en' ? desc.en : desc.zh;
+
+    return projectDescription?.map((desc, index) => (
+      <p key={index} className="mb-5">
+        {desc}
+      </p>
+    ));
+  };
+
+  return (
+    <div className="h-full flex items-end flex-col md:flex-row space-x-5 overflow-y-scroll no-scrollbar">
+      <PCImage alt={label} src={src} />
+      <div className="w-full md:w-[50%] max-h-96 md:overflow-y-scroll no-scrollbar flex flex-col space-y-4 px-0 md:p-4">
+        <div className="flex flex-wrap space-y-2 justify-between items-end">
+          <MobileImage alt={label} src={src} />
+          <h3 className="text-4xl font-bold">{label}</h3>
+          <BackToListLink
+            label={backToListLinkLabel}
+            href={`/${activeLocale}/work`}
+          />
+        </div>
+        <hr />
+        <div className="space-y-2">
+          {renderInfo()}
+          {renderLink()}
+          {renderTechStack()}
+        </div>
+        <hr />
+        <div className="space-y-2">
+          {renderDescription()}
+          <p>🚀</p>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default WorkDetailPage;

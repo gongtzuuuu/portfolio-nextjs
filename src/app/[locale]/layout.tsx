@@ -3,20 +3,15 @@ import React, { ReactNode, Suspense } from 'react';
 import { Inter, Noto_Sans } from 'next/font/google';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import NextTopLoader from 'nextjs-toploader';
-// ========== Components ========== //
-import Header from '@/components/Header';
-import Body from '@/components/Body';
-import Footer from '@/components/Footer';
-import Cursor from '@/components/Cursor';
-import Canvas from '@/components/Canvas';
-import NavigationEvents from '@/components/NavigationEvents';
-// ========== Utils ========== //
-// import { NextIntlClientProvider } from 'next-intl';
 import { ThemeProvider } from '@/context/ThemeProvider';
 import { MenuProvider } from '@/context/MenuProvider';
-// import { locales } from '@/i18n';
+import { ProjectProvider } from '@/context/ProjectProvider';
+import { Header } from '@/components/Header/Header';
+import { BodyContainer } from '@/components/BodyContainer/BodyContainer';
+import { Footer } from '@/components/Footer/Footer';
+import { NavigationEvents } from '@/components/NavigationEvents/NavigationEvents';
+import { DEFAULT_YELLOW } from '@/const/color';
 import '@/styles/globals.css';
-import '@/styles/style.css';
 
 const notoSans = Noto_Sans({
   subsets: ['latin'],
@@ -44,18 +39,19 @@ export default function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={notoSans.className}>
-        <NextTopLoader color="#937829" showSpinner={false} />
-        {/* <Cursor /> */}
+        <NextTopLoader color={DEFAULT_YELLOW} showSpinner={false} />
         <ThemeProvider>
           <MenuProvider>
-            <main className="flex min-h-screen flex-col justify-between p-12 md:p-24 lg:p-24 z-10">
-              <Header />
-              <Body>{children}</Body>
-              <Suspense fallback={null}>
-                <NavigationEvents />
-              </Suspense>
-              <Footer />
-            </main>
+            <ProjectProvider>
+              <main className="flex min-h-screen flex-col justify-between p-12 md:p-24 lg:p-24 z-10">
+                <Header />
+                <BodyContainer>{children}</BodyContainer>
+                <Suspense fallback={null}>
+                  <NavigationEvents />
+                </Suspense>
+                <Footer />
+              </main>
+            </ProjectProvider>
           </MenuProvider>
         </ThemeProvider>
       </body>

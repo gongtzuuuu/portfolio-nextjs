@@ -1,20 +1,19 @@
-import React from 'react';
-import { useTranslations } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import React, { FC } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
 import WorkDetailPage from '@/layout/WorkDetailPage';
+import { Locale } from '@/i18n';
 
-interface PageProps {
-  params: {
-    locale: string;
-  };
-}
-
-const Page: React.FC<PageProps> = ({ params: { locale } }) => {
-  unstable_setRequestLocale(locale);
+const Page: FC = () => {
+  const activeLocale = useLocale() as Locale;
   const t = useTranslations('WorkDetailPage');
-  const pageLink = t('links.back');
+  const backToListLinkLabel = t('links.back');
 
-  return <WorkDetailPage pageLink={pageLink} />;
+  return (
+    <WorkDetailPage
+      activeLocale={activeLocale}
+      backToListLinkLabel={backToListLinkLabel}
+    />
+  );
 };
 
 export default Page;

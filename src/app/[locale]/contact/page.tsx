@@ -1,25 +1,18 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useTranslations } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
 import ContactPage from '@/layout/ContactPage';
 
-interface ContactPageProps {
-  params: {
-    locale: string;
-  };
-}
-
-const Page: React.FC<ContactPageProps> = ({ params: { locale } }) => {
-  unstable_setRequestLocale(locale);
+const Page: FC = () => {
   const t = useTranslations('ContactPage');
   const pageTitle = t('title');
-  const columnEmail = t('columns.email');
-  const columnSocalMedia = t('columns.social');
+  const contactEmail = t('columns.email');
+  const contactSocialMedia = t('columns.social');
+
   return (
     <ContactPage
       pageTitle={pageTitle}
-      columnEmail={columnEmail}
-      columnSocalMedia={columnSocalMedia}
+      email={contactEmail}
+      socialMedia={contactSocialMedia}
     />
   );
 };
