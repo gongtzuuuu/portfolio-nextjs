@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 import React, { Fragment, useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -45,12 +46,11 @@ const WorkPage: React.FC<WorkPageProps> = ({
             transition={{ duration: 0.15 }}
             className="md:w-full md:h-full mb-4 md:mb-0 md:px-4 md:pt-4 overflow-hidden"
           >
-            <Image
-              fill
+            <img
               alt={selectWork.label}
               src={selectWork.src}
-              className="rounded-tr-2xl object-cover"
-              priority={true}
+              className="w-full h-full rounded-tr-2xl object-cover object-center"
+              loading="lazy"
             />
           </motion.div>
         </AnimatePresence>

@@ -1,7 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { Info, Globe, Layers3 } from 'lucide-react';
 import { segmentToWorkLabel } from '@/lib/url-utils';
@@ -51,12 +51,11 @@ const WorkDetailPage: React.FC<WorkDetailPageProps> = ({ pageLink }) => {
       <div className="h-full flex items-end flex-col md:flex-row space-x-5 overflow-y-scroll no-scrollbar">
         {/** WORK IMAGE - PC */}
         <div className="relative hidden h-[200px] w-full md:w-[50%] md:flex flex-col mb-4 md:mb-0 md:px-4 md:pt-4 overflow-hidden">
-          <Image
-            fill
+          <img
             alt={currentWork.label}
             src={currentWork.src}
             className="rounded-tr-2xl object-cover w-full h-full bg-cover bg-center"
-            priority={true}
+            loading="lazy"
           />
         </div>
         {/* WORK DETAILS */}
@@ -64,12 +63,11 @@ const WorkDetailPage: React.FC<WorkDetailPageProps> = ({ pageLink }) => {
           <div className="flex flex-wrap space-y-2 justify-between items-end">
             {/** WORK IMAGE - Mobile */}
             <div className="relative md:hidden h-[160px] w-full mb-4 overflow-hidden">
-              <Image
-                fill
+              <img
                 alt={currentWork.label}
                 src={currentWork.src}
                 className="rounded-tr-2xl object-cover w-full h-full bg-cover bg-center"
-                priority={true}
+                loading="lazy"
               />
             </div>
             <h3 className="text-4xl font-bold">{currentWork.label}</h3>

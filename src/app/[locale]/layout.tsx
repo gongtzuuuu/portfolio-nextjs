@@ -16,7 +16,6 @@ import { ThemeProvider } from '@/context/ThemeProvider';
 import { MenuProvider } from '@/context/MenuProvider';
 // import { locales } from '@/i18n';
 import '@/styles/globals.css';
-import '@/styles/style.css';
 
 const notoSans = Noto_Sans({
   subsets: ['latin'],
