@@ -6,7 +6,7 @@ import NextTopLoader from 'nextjs-toploader';
 // ========== Components ========== //
 import { Header } from '@/components/Header/Header';
 import Body from '@/components/Body';
-import Footer from '@/components/Footer';
+import { Footer } from '@/components/Footer/Footer';
 import NavigationEvents from '@/components/NavigationEvents';
 // ========== Utils ========== //
 // import { NextIntlClientProvider } from 'next-intl';

@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
-import React, { Fragment, useEffect, useState } from 'react';
-import Image from 'next/image';
+import React, { Fragment, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import { works, WorkType } from '@/lib/works';

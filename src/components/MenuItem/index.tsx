@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { useMenuContext } from '@/context/MenuProvider';
-import SocialMediaItem from '../SocialMediaItem';
 
 const menuItemVariants = {
   open: {
@@ -128,27 +127,6 @@ const MenuItemGroup: React.FC<MenuItemGroupProps> = ({}) => {
             number="04"
             label="CONTACT"
           />
-        </div>
-        {/** Menu Footer */}
-        <div className="flex space-x-4">
-          <AnimationContainer id={1}>
-            <SocialMediaItem
-              label="LinkedIn"
-              href="https://www.linkedin.com/in/tyliang/"
-            />
-          </AnimationContainer>
-          <AnimationContainer id={2}>
-            <SocialMediaItem
-              label="Medium"
-              href="https://www.medium.com/@tyliang"
-            />
-          </AnimationContainer>
-          <AnimationContainer id={3}>
-            <SocialMediaItem
-              label="Github"
-              href="https://github.com/gongtzuuuu"
-            />
-          </AnimationContainer>
         </div>
       </div>
     </>
