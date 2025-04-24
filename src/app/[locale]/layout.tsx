@@ -4,7 +4,7 @@ import { Inter, Noto_Sans } from 'next/font/google';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import NextTopLoader from 'nextjs-toploader';
 // ========== Components ========== //
-import Header from '@/components/Header';
+import { Header } from '@/components/Header/Header';
 import Body from '@/components/Body';
 import Footer from '@/components/Footer';
 import NavigationEvents from '@/components/NavigationEvents';
