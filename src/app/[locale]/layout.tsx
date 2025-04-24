@@ -7,8 +7,6 @@ import NextTopLoader from 'nextjs-toploader';
 import Header from '@/components/Header';
 import Body from '@/components/Body';
 import Footer from '@/components/Footer';
-import Cursor from '@/components/Cursor';
-import Canvas from '@/components/Canvas';
 import NavigationEvents from '@/components/NavigationEvents';
 // ========== Utils ========== //
 // import { NextIntlClientProvider } from 'next-intl';
@@ -44,7 +42,6 @@ export default function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <body className={notoSans.className}>
         <NextTopLoader color="#937829" showSpinner={false} />
-        {/* <Cursor /> */}
         <ThemeProvider>
           <MenuProvider>
             <main className="flex min-h-screen flex-col justify-between p-12 md:p-24 lg:p-24 z-10">
