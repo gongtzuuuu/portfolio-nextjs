@@ -1,5 +1,6 @@
 import React from 'react';
-import SocialMediaItem from '@/components/SocialMediaItem';
+import { SOCIAL_MEDIA } from '@/const/social-media';
+import { IconLink } from '@/components/IconLink/IconLink';
 
 interface ContactPageProps {
   pageTitle: string;
@@ -30,19 +31,15 @@ const ContactPage: React.FC<ContactPageProps> = ({
           {/** Social Media Section */}
           <div className="grid grid-cols-1 gap-4">
             <p className="font-bold">{columnSocalMedia}</p>
-            <div className="flex space-x-4">
-              <SocialMediaItem
-                label="LinkedIn"
-                href="https://www.linkedin.com/in/tyliang/"
-              />
-              <SocialMediaItem
-                label="Medium"
-                href="https://www.medium.com/@tyliang"
-              />
-              <SocialMediaItem
-                label="Github"
-                href="https://github.com/gongtzuuuu"
-              />
+            <div className="flex gap-x-4">
+              {Object.entries(SOCIAL_MEDIA).map(([key, value]) => (
+                <IconLink
+                  key={key}
+                  type="external"
+                  label={value.label}
+                  href={value.href}
+                />
+              ))}
             </div>
           </div>
         </div>
