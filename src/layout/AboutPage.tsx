@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react';
-import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { ArrowDownToLine, Headset } from 'lucide-react';
 import SocialMediaItem from '@/components/SocialMediaItem';
@@ -46,12 +46,11 @@ const AboutPage: React.FC<AboutPageProps> = ({}) => {
       </div>
       {/** ABOUT ME IMAGE */}
       <div className="relative h-[200px] w-[50%] hidden md:flex px-4 pt-4">
-        <Image
-          fill
+        <img
           src="/about.png"
           alt="Menu Image"
-          className="w-full h-full rounded-tr-2xl object-cover"
-          priority={true}
+          className="w-full h-full rounded-tr-2xl object-cover object-center"
+          loading="lazy"
         />
       </div>
     </div>
