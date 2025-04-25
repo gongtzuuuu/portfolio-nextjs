@@ -14,7 +14,11 @@ type IconLinkProps = {
 export const IconLink: FC<IconLinkProps> = ({ type, label, href, Icon }) => {
   const target = type === 'external' ? '_blank' : '_self';
   return (
-    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.95 }}>
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.95 }}
+      className="w-fit"
+    >
       <Link
         href={href}
         target={target}
