@@ -25,8 +25,8 @@ const Page: React.FC = () => {
     <div className="flex items-end">
       <div className="w-full md:w-[50%] max-h-96 overflow-y-scroll no-scrollbar flex flex-col gap-y-4 px-0 md:p-4">
         <h3 className="text-4xl font-bold">{pageTitle}</h3>
-        <hr />
-        <p className="mb-4">{pageDescription}</p>
+        <hr className="w-full md:w-[90%]" />
+        <p className="w-full md:w-[90%] mb-4">{pageDescription}</p>
         <IconLinkResume label={resumeLabel} href={resumeLink} />
       </div>
       <div className="relative h-[200px] w-[50%] hidden md:flex px-4 pt-4">

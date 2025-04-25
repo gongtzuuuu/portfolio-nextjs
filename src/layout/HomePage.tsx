@@ -1,16 +1,14 @@
 'use client';
 import React, { ReactNode } from 'react';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FolderOpenDot, Gem } from 'lucide-react';
+import { Locales } from '@/i18n';
+import { IconLink } from '@/components/IconLink/IconLink';
 
 interface HomePageProps {
-  activeLocale: string;
+  activeLocale: Locales;
   pageTitle: string;
-  pageDescription:
-    | string
-    | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-    | React.ReactNodeArray;
+  pageDescription: ReactNode;
   linkWork: string;
   linkAbout: string;
 }
@@ -70,12 +68,6 @@ const LinkAnimation = ({
   </motion.div>
 );
 
-const HoverEffect = ({ children }: { children: ReactNode }) => (
-  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-    {children}
-  </motion.div>
-);
-
 const HomePage: React.FC<HomePageProps> = ({
   activeLocale,
   pageTitle,
@@ -88,7 +80,7 @@ const HomePage: React.FC<HomePageProps> = ({
       initial="hidden"
       animate="visible"
       exit={{ opacity: 0, transition: { duration: 1 } }}
-      className="flex flex-col space-y-6 items-center"
+      className="flex flex-col gap-y-6 items-center"
     >
       <TitleAnimation>
         <h1 className="text-3xl md:text-4xl font-bold text-center">
@@ -96,22 +88,22 @@ const HomePage: React.FC<HomePageProps> = ({
         </h1>
       </TitleAnimation>
       <TextAnimation delay={0.2}>{pageDescription}</TextAnimation>
-      <div className="flex flex-col md:flex-row md:space-x-6">
+      <div className="flex flex-col md:flex-row md:gap-x-6 items-center justify-center">
         <LinkAnimation delay={0.4}>
-          <HoverEffect>
-            <Link href={`${activeLocale}/work`} className="flex items-center">
-              <FolderOpenDot size={16} className="mr-1" />
-              {linkWork}
-            </Link>
-          </HoverEffect>
+          <IconLink
+            type="internal"
+            label={linkWork}
+            href={`${activeLocale}/work`}
+            Icon={FolderOpenDot}
+          />
         </LinkAnimation>
         <LinkAnimation delay={0.6}>
-          <HoverEffect>
-            <Link href={`${activeLocale}/about`} className="flex items-center">
-              <Gem size={16} className="mr-1" />
-              {linkAbout}
-            </Link>
-          </HoverEffect>
+          <IconLink
+            type="internal"
+            label={linkAbout}
+            href={`${activeLocale}/about`}
+            Icon={Gem}
+          />
         </LinkAnimation>
       </div>
     </motion.div>
