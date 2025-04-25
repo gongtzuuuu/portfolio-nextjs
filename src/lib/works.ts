@@ -1,4 +1,3 @@
-import { TechStack } from './enums';
 interface LinkType {
   en: string;
   zh: string;
