@@ -4,10 +4,9 @@ import React, { Fragment, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { Info, Globe, Layers3 } from 'lucide-react';
-import { segmentToWorkLabel } from '@/lib/url-utils';
-import { works, WorkType } from '@/lib/works';
-import { TechStack } from '@/lib/enums';
 import { Locales } from '@/i18n';
+import { TechStack } from '@/const/tech-stacks';
+import { WORK_LIST, WorkTitles, WorkType } from '@/const/works';
 import { GoBackLink } from '@/components/GoBackLink/GoBackLink';
 
 interface WorkDetailPageProps {
@@ -24,15 +23,17 @@ const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
   const [currentWork, setCurrentWork] = useState<WorkType | undefined>();
 
   useEffect(() => {
-    const urlWorkLabel = segmentToWorkLabel(params.work as string);
-    const selectedWork = works.find((work) => work.label === urlWorkLabel);
+    const urlWorkLabel = params.work as WorkTitles;
+
+    const selectedWork: WorkType = WORK_LIST[urlWorkLabel] ?? undefined;
 
     if (selectedWork) {
       setCurrentWork(selectedWork);
     } else {
-      router.replace('/work');
+      router.back();
     }
-  }, [params.work, router]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (!currentWork) return null;
 

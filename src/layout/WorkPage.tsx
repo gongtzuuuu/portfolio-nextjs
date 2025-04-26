@@ -4,10 +4,9 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Locales } from '@/i18n';
-import { works, WorkType } from '@/lib/works';
-import { workLabelToSegment } from '@/lib/url-utils';
 import { GoDownButton } from '@/components/GoDownButton/GoDownButton';
 import { WorkListItem } from '@/components/WorkListItem/WorkListItem';
+import { WORK_LIST, WorkType } from '@/const/works';
 
 type WorkPageProps = {
   activeLocale: Locales;
@@ -17,18 +16,19 @@ type WorkPageProps = {
 const WorkPage: React.FC<WorkPageProps> = ({ activeLocale, pageTitle }) => {
   const router = useRouter();
 
-  const [selectedWork, setSelectedWork] = useState<WorkType>(works[0]);
+  const [selectedWork, setSelectedWork] = useState<WorkType>(
+    WORK_LIST.superchat
+  );
 
-  const onHoverStart = (label: string) => {
-    const hoveredWork = works.filter((work) => work.label === label);
-    if (hoveredWork.length === 0) return;
+  const onHoverStart = (id: string) => {
+    const hoveredWork = Object.values(WORK_LIST).find((work) => work.id === id);
+    if (!hoveredWork) return;
 
-    setSelectedWork(hoveredWork[0]);
+    setSelectedWork(hoveredWork);
   };
 
-  const handleWorkClick = (label: string) => {
-    const segment = workLabelToSegment(label);
-    router.push(`work/${segment}`);
+  const handleWorkClick = (id: string) => {
+    router.push(`work/${id}`);
   };
 
   const renderSelectedImage = (selectedWork: WorkType) => {
@@ -61,14 +61,14 @@ const WorkPage: React.FC<WorkPageProps> = ({ activeLocale, pageTitle }) => {
       <div className="w-full md:w-[50%] max-h-96 overflow-y-scroll no-scrollbar flex flex-col gap-y-4 px-0 md:p-4">
         <h3 className="text-4xl font-bold">{pageTitle}</h3>
         <hr />
-        {works.map((work) => (
+        {Object.values(WORK_LIST).map((work) => (
           <WorkListItem
-            key={work.label}
+            key={work.id}
             label={work.label}
             date={work.date[activeLocale]}
             type={work.type[activeLocale]}
-            onHoverStart={() => onHoverStart(work.label)}
-            onClick={() => handleWorkClick(work.label)}
+            onHoverStart={() => onHoverStart(work.id)}
+            onClick={() => handleWorkClick(work.id)}
           />
         ))}
       </div>

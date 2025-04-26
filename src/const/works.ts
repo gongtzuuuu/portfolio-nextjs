@@ -1,31 +1,33 @@
-interface LinkType {
+import { Locales } from '@/i18n';
+
+export type WorkTitles =
+  | 'superchat'
+  | 'portfolio'
+  | 'meloverse'
+  | 'gluttonGlobe'
+  | 'fitQuest'
+  | 'officeSimulator';
+
+type LinksType = {
   en: string;
   zh: string;
   url: string;
-}
-export interface WorkType {
-  index: number;
+};
+
+export type WorkType = {
+  id: WorkTitles;
   label: string;
   src: string;
   techStack: string[];
-  date: {
-    zh: string;
-    en: string;
-  };
-  type: {
-    zh: string;
-    en: string;
-  };
-  links: LinkType[];
-  desc: {
-    zh: string[];
-    en: string[];
-  };
-}
+  date: Record<Locales, string>;
+  type: Record<Locales, string>;
+  links: LinksType[];
+  desc: Record<Locales, string[]>;
+};
 
-export const works: WorkType[] = [
-  {
-    index: 0,
+export const WORK_LIST: Record<WorkTitles, WorkType> = {
+  superchat: {
+    id: 'superchat',
     label: 'superchat',
     src: '/works/chat.png',
     date: { en: 'July 2024', zh: '2024年7月' },
@@ -54,8 +56,8 @@ export const works: WorkType[] = [
       ],
     },
   },
-  {
-    index: 1,
+  portfolio: {
+    id: 'portfolio',
     label: 'portfolio',
     src: '/works/portfolio.png',
     date: { en: 'July 2024', zh: '2024年7月' },
@@ -80,8 +82,8 @@ export const works: WorkType[] = [
       ],
     },
   },
-  {
-    index: 2,
+  meloverse: {
+    id: 'meloverse',
     label: 'meloverse',
     src: '/works/music.png',
     date: { en: 'June 2023', zh: '2023年6月' },
@@ -112,8 +114,8 @@ export const works: WorkType[] = [
       ],
     },
   },
-  {
-    index: 3,
+  gluttonGlobe: {
+    id: 'gluttonGlobe',
     label: 'GluttonGlobe',
     src: '/works/travel.png',
     date: { en: 'June 2023', zh: '2023年6月' },
@@ -149,8 +151,8 @@ export const works: WorkType[] = [
       ],
     },
   },
-  {
-    index: 4,
+  fitQuest: {
+    id: 'fitQuest',
     label: 'FitQuest',
     src: '/works/gym.png',
     date: { en: 'June 2023', zh: '2023年6月' },
@@ -181,8 +183,8 @@ export const works: WorkType[] = [
       ],
     },
   },
-  {
-    index: 5,
+  officeSimulator: {
+    id: 'officeSimulator',
     label: 'Office Simulator',
     src: '/works/office.png',
     date: { en: 'May 2023', zh: '2023年5月' },
@@ -213,4 +215,4 @@ export const works: WorkType[] = [
       ],
     },
   },
-];
+};
