@@ -7,7 +7,7 @@ import { Info, Globe, Layers3 } from 'lucide-react';
 import { Locales } from '@/i18n';
 import { TechStack } from '@/const/tech-stacks';
 import { WORK_LIST, WorkTitles, WorkType } from '@/const/works';
-import { GoBackLink } from '@/components/GoBackLink/GoBackLink';
+import { GoBackLink } from '@/components/base/GoBackLink';
 
 interface WorkDetailPageProps {
   activeLocale: Locales;
@@ -129,7 +129,7 @@ const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
         <div className="flex flex-wrap gap-y-2 justify-between items-end">
           {renderMobileImage()}
           <h3 className="text-4xl font-bold">{currentWork.label}</h3>
-          <GoBackLink label={goBackLinkLabel} href={`/${activeLocale}/work`} />
+          <GoBackLink />
         </div>
         <hr />
         <div className="space-y-2">

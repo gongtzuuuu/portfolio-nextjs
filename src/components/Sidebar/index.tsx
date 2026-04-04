@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { Locales } from '@/i18n';
 import { useMenuContext } from '@/context/MenuProvider';
 import { SIDEBAR_LINKS } from '@/const/sidebar-links';
-import { normalizePath } from '@/utils.ts/path';
+import { normalizePath } from '@/utils/path';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 
 interface SidebarProps {}
