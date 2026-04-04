@@ -1,19 +1,15 @@
 'use client';
-
 import { useEffect } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useMenuContext } from '@/context/MenuProvider';
 
-const NavigationEvents = () => {
+export const NavigationEvents = () => {
   const pathname = usePathname();
   const { setIsMenuOpen } = useMenuContext();
 
   useEffect(() => {
-    // You can now use the current URL
     setIsMenuOpen(false);
   }, [pathname, setIsMenuOpen]);
 
   return null;
 };
-
-export default NavigationEvents;

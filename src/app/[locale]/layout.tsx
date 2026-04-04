@@ -1,60 +1,41 @@
-import type { Metadata } from 'next';
-import React, { ReactNode, Suspense } from 'react';
-import { Inter, Noto_Sans } from 'next/font/google';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import React, { Suspense } from 'react';
 import NextTopLoader from 'nextjs-toploader';
-// ========== Components ========== //
-import { Header } from '@/components/Header/Header';
-import Body from '@/components/Body';
-import { Footer } from '@/components/Footer/Footer';
-import NavigationEvents from '@/components/NavigationEvents';
-// ========== Utils ========== //
-// import { NextIntlClientProvider } from 'next-intl';
-import { ThemeProvider } from '@/context/ThemeProvider';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 import { MenuProvider } from '@/context/MenuProvider';
-// import { locales } from '@/i18n';
-import '@/styles/globals.css';
+import { ThemeProvider } from '@/context/ThemeProvider';
+import { Header } from '@/components/Header/Header';
+import { MainContent } from '@/components/layouts/MainContent';
+import { NavigationEvents } from '@/components/layouts/NavigationEvents';
+import { Footer } from '@/components/Footer/Footer';
 
-const notoSans = Noto_Sans({
-  subsets: ['latin'],
-});
-// const inter = Inter({ subsets: ['latin'] });
-
-export const metadata: Metadata = {
-  title: 'TZU',
-  description: `Welcome to Tzu Yun's website! Explore my software engineering skills, projects, resume, and blog. Connect with me on LinkedIn, GitHub, and more. Let's create innovative solutions together!`,
-};
-
-interface RootLayoutProps {
-  children: ReactNode;
-  params: {
-    locale: string;
-  };
+interface LocaleLayoutProps {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }
 
-export default function RootLayout({
+export default async function LocaleLayout({
   children,
-  params: { locale },
-}: Readonly<RootLayoutProps>) {
-  unstable_setRequestLocale(locale);
+  params,
+}: Readonly<LocaleLayoutProps>) {
+  const { locale } = await params;
+  const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <body className={notoSans.className}>
-        <NextTopLoader color="#937829" showSpinner={false} />
-        <ThemeProvider>
-          <MenuProvider>
-            <main className="flex min-h-screen flex-col justify-between p-12 md:p-24 lg:p-24 z-10">
-              <Header />
-              <Body>{children}</Body>
-              <Suspense fallback={null}>
-                <NavigationEvents />
-              </Suspense>
-              <Footer />
-            </main>
-          </MenuProvider>
-        </ThemeProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      <NextTopLoader color="#937829" showSpinner={false} />
+      <ThemeProvider>
+        <MenuProvider>
+          <main className="flex min-h-screen flex-col justify-between p-12 md:p-24 lg:p-24 z-10">
+            <Header />
+            <Suspense fallback={null}>
+              <MainContent>{children}</MainContent>
+              <NavigationEvents />
+            </Suspense>
+            <Footer />
+          </main>
+        </MenuProvider>
+      </ThemeProvider>
+    </NextIntlClientProvider>
   );
 }
