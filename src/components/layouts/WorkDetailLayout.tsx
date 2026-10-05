@@ -1,51 +1,30 @@
-/* eslint-disable @next/next/no-img-element */
-'use client';
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment } from 'react';
 import Link from 'next/link';
-import { useParams, useRouter } from 'next/navigation';
+import Image from 'next/image';
+import { useLocale } from 'next-intl';
 import { Info, Globe, Layers3 } from 'lucide-react';
 import { Locales } from '@/i18n';
 import { TechStack } from '@/const/tech-stacks';
-import { WORK_LIST, WorkTitles, WorkType } from '@/const/works';
-import { GoBackLink } from '@/components/base/GoBackLink';
+import { WorkType } from '@/const/works';
+import { GoBackLink } from '@/components/base/links/GoBackLink';
 
-interface WorkDetailPageProps {
-  activeLocale: Locales;
-  goBackLinkLabel: string;
+interface WorkDetailLayoutProps {
+  work: WorkType;
 }
 
-const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
-  activeLocale,
-  goBackLinkLabel,
-}) => {
-  const params = useParams();
-  const router = useRouter();
-  const [currentWork, setCurrentWork] = useState<WorkType | undefined>();
-
-  useEffect(() => {
-    const urlWorkLabel = params.work as WorkTitles;
-
-    const selectedWork: WorkType = WORK_LIST[urlWorkLabel] ?? undefined;
-
-    if (selectedWork) {
-      setCurrentWork(selectedWork);
-    } else {
-      router.back();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  if (!currentWork) return null;
+export const WorkDetailLayout = ({ work: currentWork }: WorkDetailLayoutProps) => {
+  const activeLocale = useLocale() as Locales;
 
   const { links, techStack, desc } = currentWork;
 
   const renderPcImage = () => {
     return (
       <div className="relative hidden h-[200px] w-full md:w-[50%] md:flex flex-col mb-4 md:mb-0 md:px-4 md:pt-4 overflow-hidden">
-        <img
+        <Image
           alt={currentWork.label}
           src={currentWork.src}
-          className="rounded-tr-2xl object-cover w-full h-full bg-cover bg-center"
+          fill
+          className="rounded-tr-2xl object-cover object-center"
           loading="lazy"
         />
       </div>
@@ -55,10 +34,11 @@ const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
   const renderMobileImage = () => {
     return (
       <div className="relative md:hidden h-[160px] w-full mb-4 overflow-hidden">
-        <img
+        <Image
           alt={currentWork.label}
           src={currentWork.src}
-          className="rounded-tr-2xl object-cover w-full h-full bg-cover bg-center"
+          fill
+          className="rounded-tr-2xl object-cover object-center"
           loading="lazy"
         />
       </div>
@@ -144,5 +124,3 @@ const WorkDetailPage: React.FC<WorkDetailPageProps> = ({
     </div>
   );
 };
-
-export default WorkDetailPage;

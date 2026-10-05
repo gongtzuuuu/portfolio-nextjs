@@ -4,9 +4,9 @@ export type WorkTitles =
   | 'superchat'
   | 'portfolio'
   | 'meloverse'
-  | 'gluttonGlobe'
-  | 'fitQuest'
-  | 'officeSimulator';
+  | 'glutton-globe'
+  | 'fit-quest'
+  | 'office-simulator';
 
 type LinksType = {
   en: string;
@@ -114,8 +114,8 @@ export const WORK_LIST: Record<WorkTitles, WorkType> = {
       ],
     },
   },
-  gluttonGlobe: {
-    id: 'gluttonGlobe',
+  'glutton-globe': {
+    id: 'glutton-globe',
     label: 'GluttonGlobe',
     src: '/works/travel.png',
     date: { en: 'June 2023', zh: '2023年6月' },
@@ -151,8 +151,8 @@ export const WORK_LIST: Record<WorkTitles, WorkType> = {
       ],
     },
   },
-  fitQuest: {
-    id: 'fitQuest',
+  'fit-quest': {
+    id: 'fit-quest',
     label: 'FitQuest',
     src: '/works/gym.png',
     date: { en: 'June 2023', zh: '2023年6月' },
@@ -183,8 +183,8 @@ export const WORK_LIST: Record<WorkTitles, WorkType> = {
       ],
     },
   },
-  officeSimulator: {
-    id: 'officeSimulator',
+  'office-simulator': {
+    id: 'office-simulator',
     label: 'Office Simulator',
     src: '/works/office.png',
     date: { en: 'May 2023', zh: '2023年5月' },

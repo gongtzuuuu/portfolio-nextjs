@@ -1,6 +1,14 @@
 import React from 'react';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import { HomePageLayout } from '@/components/layouts/HomePageLayout';
 
-export default function Page() {
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
+
+export default async function Page({ params }: PageProps) {
+  const { locale } = await params;
+  unstable_setRequestLocale(locale);
+
   return <HomePageLayout />;
 }
