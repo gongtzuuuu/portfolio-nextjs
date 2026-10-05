@@ -1,20 +1,25 @@
 import React from 'react';
-import { useLocale, useTranslations } from 'next-intl';
-import { Locales } from '@/i18n';
-import WorkDetailPage from '@/layout/WorkDetailPage';
+import { notFound } from 'next/navigation';
+import { unstable_setRequestLocale } from 'next-intl/server';
+import { WORK_LIST, WorkTitles } from '@/const/works';
+import { WorkDetailLayout } from '@/components/layouts/WorkDetailLayout';
 
-const Page: React.FC = () => {
-  const activeLocale = useLocale() as Locales;
-  const t = useTranslations('WorkDetailPage');
+interface PageProps {
+  params: Promise<{ locale: string; work: string }>;
+}
 
-  const goBackLinkLabel = t('links.back');
+const isWorkTitle = (id: string): id is WorkTitles =>
+  Object.prototype.hasOwnProperty.call(WORK_LIST, id);
 
-  return (
-    <WorkDetailPage
-      activeLocale={activeLocale}
-      goBackLinkLabel={goBackLinkLabel}
-    />
-  );
-};
+export function generateStaticParams() {
+  return Object.keys(WORK_LIST).map((work) => ({ work }));
+}
 
-export default Page;
+export default async function Page({ params }: PageProps) {
+  const { locale, work } = await params;
+  unstable_setRequestLocale(locale);
+
+  if (!isWorkTitle(work)) notFound();
+
+  return <WorkDetailLayout work={WORK_LIST[work]} />;
+}

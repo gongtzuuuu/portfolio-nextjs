@@ -1,23 +1,21 @@
-/* eslint-disable @next/next/no-img-element */
 'use client';
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { AnimatePresence, motion } from 'framer-motion';
+import { useLocale, useTranslations } from 'next-intl';
+import { motion } from 'framer-motion';
 import { Locales } from '@/i18n';
-import { GoDownButton } from '@/components/GoDownButton/GoDownButton';
+import { GoDownButton } from '@/components/base/GoDownButton';
 import { WorkListItem } from '@/components/WorkListItem/WorkListItem';
 import { WORK_LIST, WorkType } from '@/const/works';
 
-type WorkPageProps = {
-  activeLocale: Locales;
-  pageTitle: string;
-};
-
-const WorkPage: React.FC<WorkPageProps> = ({ activeLocale, pageTitle }) => {
+export const WorkListLayout = () => {
   const router = useRouter();
+  const activeLocale = useLocale() as Locales;
+  const t = useTranslations('WorkPage');
 
   const [selectedWork, setSelectedWork] = useState<WorkType>(
-    WORK_LIST.superchat
+    WORK_LIST.superchat,
   );
 
   const onHoverStart = (id: string) => {
@@ -33,23 +31,22 @@ const WorkPage: React.FC<WorkPageProps> = ({ activeLocale, pageTitle }) => {
 
   const renderSelectedImage = (selectedWork: WorkType) => {
     return (
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={selectedWork.label}
-          animate={{ opacity: 1, y: 0 }}
-          initial={{ opacity: 0, y: 20 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.15 }}
-          className="md:w-full md:h-full mb-4 md:mb-0 md:px-4 md:pt-4 overflow-hidden"
-        >
-          <img
-            alt={selectedWork.label}
-            src={selectedWork.src}
-            className="w-full h-full rounded-tr-2xl object-cover object-center"
-            loading="lazy"
-          />
-        </motion.div>
-      </AnimatePresence>
+      <motion.div
+        key={selectedWork.label}
+        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 20 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.15 }}
+        className="relative md:w-full md:h-full mb-4 md:mb-0 md:px-4 md:pt-4 overflow-hidden"
+      >
+        <Image
+          alt={selectedWork.label}
+          src={selectedWork.src}
+          fill
+          className="rounded-tr-2xl object-cover object-center"
+          loading="lazy"
+        />
+      </motion.div>
     );
   };
 
@@ -59,7 +56,7 @@ const WorkPage: React.FC<WorkPageProps> = ({ activeLocale, pageTitle }) => {
         {renderSelectedImage(selectedWork)}
       </div>
       <div className="w-full md:w-[50%] max-h-96 overflow-y-scroll no-scrollbar flex flex-col gap-y-4 px-0 md:p-4">
-        <h3 className="text-4xl font-bold">{pageTitle}</h3>
+        <h3 className="text-4xl font-bold">{t('title')}</h3>
         <hr />
         {Object.values(WORK_LIST).map((work) => (
           <WorkListItem
@@ -76,5 +73,3 @@ const WorkPage: React.FC<WorkPageProps> = ({ activeLocale, pageTitle }) => {
     </div>
   );
 };
-
-export default WorkPage;

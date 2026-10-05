@@ -1,15 +1,14 @@
 import React from 'react';
-import { useTranslations, useLocale } from 'next-intl';
-import { Locales } from '@/i18n';
-import WorkPage from '@/layout/WorkPage';
+import { unstable_setRequestLocale } from 'next-intl/server';
+import { WorkListLayout } from '@/components/layouts/WorkListLayout';
 
-const Page: React.FC = () => {
-  const activeLocale = useLocale() as Locales;
-  const t = useTranslations('WorkPage');
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
 
-  const pageTitle = t('title');
+export default async function Page({ params }: PageProps) {
+  const { locale } = await params;
+  unstable_setRequestLocale(locale);
 
-  return <WorkPage activeLocale={activeLocale} pageTitle={pageTitle} />;
-};
-
-export default Page;
+  return <WorkListLayout />;
+}
