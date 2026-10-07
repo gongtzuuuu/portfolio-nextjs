@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 
 interface CatchAllPageProps {
   params: {
@@ -10,6 +10,6 @@ interface CatchAllPageProps {
 export default function CatchAllPage({
   params: { locale },
 }: CatchAllPageProps) {
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
   notFound();
 }

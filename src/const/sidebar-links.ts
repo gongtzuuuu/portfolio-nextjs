@@ -11,6 +11,10 @@ export const SIDEBAR_LINKS = {
     label: 'WORK',
     href: '/work',
   },
+  writing: {
+    label: 'WRITING',
+    href: '/writing',
+  },
   contact: {
     label: 'CONTACT',
     href: '/contact',

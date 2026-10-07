@@ -12,7 +12,9 @@ interface WorkDetailLayoutProps {
   work: WorkType;
 }
 
-export const WorkDetailLayout = ({ work: currentWork }: WorkDetailLayoutProps) => {
+export const WorkDetailLayout = ({
+  work: currentWork,
+}: WorkDetailLayoutProps) => {
   const activeLocale = useLocale() as Locales;
 
   const { links, techStack, desc } = currentWork;

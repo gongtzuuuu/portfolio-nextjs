@@ -1,6 +1,6 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { WORK_LIST, WorkTitles } from '@/const/works';
 import { WorkDetailLayout } from '@/components/layouts/WorkDetailLayout';
 
@@ -17,7 +17,7 @@ export function generateStaticParams() {
 
 export default async function Page({ params }: PageProps) {
   const { locale, work } = await params;
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
 
   if (!isWorkTitle(work)) notFound();
 
