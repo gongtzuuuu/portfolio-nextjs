@@ -7,7 +7,7 @@ interface MenuContextType {
 }
 
 export const MenuContext = createContext<MenuContextType>(
-  {} as MenuContextType
+  {} as MenuContextType,
 );
 
 export const useMenuContext = () => useContext(MenuContext);

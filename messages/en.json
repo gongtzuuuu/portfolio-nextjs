@@ -46,6 +46,20 @@
       "collaboration": "Collaboration Project"
     }
   },
+  "WritingPage": {
+    "title": "writing",
+    "description": "Notes on frontend development, design, and things I learn along the way.",
+    "empty": "Nothing here yet — the first post is on its way.",
+    "pick": "Pick a post on the left to start reading.",
+    "readingTime": "{minutes} min read",
+    "back": "Back to writing",
+    "onlyIn": "This post is only available in {language}.",
+    "rss": "RSS feed",
+    "languages": {
+      "en": "English",
+      "zh": "Chinese"
+    }
+  },
   "NotFoundPage": {
     "title": "404 Not Found",
     "description": "Sorry, the page you are looking for does not exist.",

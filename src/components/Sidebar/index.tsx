@@ -1,8 +1,7 @@
 'use client';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useLocale } from 'next-intl';
 import { usePathname } from 'next/navigation';
-import { Router } from 'next/router';
 import { motion } from 'framer-motion';
 import { Locales } from '@/i18n';
 import { useMenuContext } from '@/context/MenuProvider';
@@ -27,20 +26,8 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
 
   const { setIsMenuOpen } = useMenuContext();
 
-  /**
-   * Close the menu once the route has changed
-   */
-  useEffect(() => {
-    const handleRouteChangeComplete = () => setIsMenuOpen(false);
-
-    Router.events?.on('routeChangeComplete', handleRouteChangeComplete);
-
-    return () => {
-      Router.events?.off('routeChangeComplete', handleRouteChangeComplete);
-    };
-  }, [setIsMenuOpen]);
-
-  // Ensure that the menu closes after the next page is loaded
+  // NavigationEvents closes the menu when the route changes; a link to the
+  // current page doesn't change the route, so close it here
   const handleMenuClose = (nextUrl: string) => {
     const current = normalizePath(pathname);
     const next = normalizePath(nextUrl);

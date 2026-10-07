@@ -14,7 +14,7 @@ export const ContactLayout = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="grid gap-4">
             <p className="font-bold">{t('columns.email')}</p>
-            <p>liangtuzyun@gmail.com</p>
+            <p>liangtzuyun@gmail.com</p>
           </div>
           <div className="grid gap-4">
             <p className="font-bold">{t('columns.social')}</p>

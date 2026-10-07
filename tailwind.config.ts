@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 import { fontFamily } from 'tailwindcss/defaultTheme';
 import tailwindcssAnimate from 'tailwindcss-animate';
+import tailwindcssTypography from '@tailwindcss/typography';
 
 const config = {
   darkMode: ['class'],
@@ -21,7 +22,11 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', ...fontFamily.sans],
+        sans: [
+          'var(--font-noto-sans)',
+          'var(--font-noto-sans-tc)',
+          ...fontFamily.sans,
+        ],
       },
       colors: {
         border: 'hsl(var(--border))',
@@ -79,7 +84,7 @@ const config = {
       },
     },
   },
-  plugins: [tailwindcssAnimate],
+  plugins: [tailwindcssAnimate, tailwindcssTypography],
 } satisfies Config;
 
 export default config;

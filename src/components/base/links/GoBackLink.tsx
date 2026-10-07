@@ -4,17 +4,23 @@ import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { ChevronLeft } from 'lucide-react';
 
-export const GoBackLink = () => {
+type GoBackLinkProps = {
+  /** Defaults to the work list */
+  href?: string;
+  label?: string;
+};
+
+export const GoBackLink = ({ href, label }: GoBackLinkProps) => {
   const activeLocale = useLocale();
   const t = useTranslations('WorkDetailPage');
 
   return (
     <Link
       className="flex items-center gap-1 text-xs font-light hover:text-[#937829]"
-      href={`/${activeLocale}/work`}
+      href={href ?? `/${activeLocale}/work`}
     >
       <ChevronLeft size={16} />
-      {t('links.back')}
+      {label ?? t('links.back')}
     </Link>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { WorkListLayout } from '@/components/layouts/WorkListLayout';
 
 interface PageProps {
@@ -8,7 +8,7 @@ interface PageProps {
 
 export default async function Page({ params }: PageProps) {
   const { locale } = await params;
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
 
   return <WorkListLayout />;
 }
