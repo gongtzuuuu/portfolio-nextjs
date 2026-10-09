@@ -48,8 +48,8 @@
   },
   "WritingPage": {
     "title": "writing",
-    "description": "Notes on frontend development, design, and things I learn along the way.",
-    "empty": "Nothing here yet — the first post is on its way.",
+    "description": "Thoughts and notes that are not necessarily related to software engineering.",
+    "empty": "Nothing here yet... the first post is on its way.",
     "pick": "Pick a post on the left to start reading.",
     "readingTime": "{minutes} min read",
     "back": "Back to writing",
@@ -62,7 +62,7 @@
   },
   "NotFoundPage": {
     "title": "404 Not Found",
-    "description": "Sorry, the page you are looking for does not exist.",
-    "link": "Back to Home"
+    "description": "Sorry, this page does not exist. Please check the URL and try again.",
+    "link": "Back to Homepage"
   }
 }
