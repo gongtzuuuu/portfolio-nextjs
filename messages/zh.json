@@ -48,8 +48,8 @@
   },
   "WritingPage": {
     "title": "文章",
-    "description": "關於前端開發、設計，以及一路上學到的事。",
-    "empty": "還沒有文章，第一篇正在路上。",
+    "description": "我的思考和筆記，不一定與軟體工程相關。",
+    "empty": "還沒有文章... 第一篇正在路上。",
     "pick": "從左邊選一篇文章開始閱讀。",
     "readingTime": "閱讀時間 {minutes} 分鐘",
     "back": "回到文章列表",
