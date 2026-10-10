@@ -7,8 +7,9 @@
     "title": "Hello, I am Tzu!",
     "description": "I am a software engineer and product designer<break></break>I build software with a focus on usability, thoughtful design, and real-world problems.",
     "links": {
-      "works": "see my projects",
-      "about": "more about me"
+      "works": "software development projects",
+      "about": "more about me",
+      "writing": "articles and notes"
     }
   },
   "AboutPage": {

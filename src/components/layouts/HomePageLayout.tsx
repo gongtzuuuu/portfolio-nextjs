@@ -3,7 +3,7 @@ import React from 'react';
 import { Locales } from '@/i18n';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { FolderOpenDot, Gem } from 'lucide-react';
+import { FolderOpenDot, NotebookPen } from 'lucide-react';
 import { IconLink } from '@/components/IconLink/IconLink';
 import { HomeTexts } from '@/components/base/home/HomeTexts';
 
@@ -38,9 +38,9 @@ export const HomePageLayout = () => {
         <HomeTexts.Link delay={0.6}>
           <IconLink
             type="internal"
-            label={t('links.about')}
-            href={`${activeLocale}/about`}
-            Icon={Gem}
+            label={t('links.writing')}
+            href={`${activeLocale}/writing`}
+            Icon={NotebookPen}
           />
         </HomeTexts.Link>
       </div>
