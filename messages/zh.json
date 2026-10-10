@@ -7,8 +7,9 @@
     "title": "Hello, 我是 Tzu！",
     "description": "我是一名軟體工程師<break></break>致力於打造能解決真實問題的軟體，兼顧使用者體驗、介面美感與實用性",
     "links": {
-      "works": "查看作品集",
-      "about": "更多關於我"
+      "works": "軟體開發作品",
+      "about": "更多關於我",
+      "writing": "文章隨筆"
     }
   },
   "AboutPage": {
